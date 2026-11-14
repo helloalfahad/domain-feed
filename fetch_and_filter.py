@@ -85,7 +85,7 @@ def passes_hard_filters(domain):
         return False, tld
     if not sld.isascii() or not sld.isalpha():
         return False, tld
-    if len(sld) < 3 or len(sld) > MAX_SLD_LEN:
+    if len(sld) < 5 or len(sld) > MAX_SLD_LEN:
         return False, tld
     if tld in WATCH_TLDS and len(sld) > 8:
         return False, tld
@@ -96,7 +96,7 @@ def passes_hard_filters(domain):
 
 # ---------- Flexible field access (feeds change their column names) ----------
 DOMAIN_KEYS = ["domainname", "domain", "domain name", "name", "domain_name"]
-PRICE_KEYS = ["price", "currentprice", "current price", "currentbid", "current bid",
+PRICE_KEYS = ["price", "bid price", "currentprice", "current price", "currentbid", "current bid",
               "minbid", "min bid", "bidprice", "buynowprice", "buy now price", "amount"]
 BIDS_KEYS = ["numberofbids", "bids", "bid count", "bidcount", "num bids"]
 END_KEYS = ["auctionendtime", "endtime", "end time", "end date", "enddate",
@@ -126,11 +126,40 @@ def to_price(val):
         return None
 
 
+TLDCOUNT_KEYS = ["dotdb tld count", "keywordregistrations", "exactmatchtlds", "developedtlds"]
+VOLUME_KEYS = ["semrushsearchvolume", "search volume"]
+AGE_KEYS = ["domainage", "age"]
+REFDOM_KEYS = ["majesticreferringdomains", "semrushreferringdomains", "links"]
+ADULT_KEYS = ["isadult"]
+
+
+def to_num(val):
+    if val is None or val == "":
+        return 0.0
+    if isinstance(val, bool):
+        return float(val)
+    if isinstance(val, (int, float)):
+        return float(val)
+    if isinstance(val, (list, tuple)):
+        return float(len(val))
+    m = re.search(r"-?[\d,]+(?:\.\d+)?", str(val))
+    try:
+        return float(m.group(0).replace(",", "")) if m else 0.0
+    except ValueError:
+        return 0.0
+
+
+def best(row, keys):
+    low = {str(k).strip().lower(): v for k, v in row.items()}
+    return max((to_num(low.get(k)) for k in keys), default=0.0)
+
+
 def normalise(row, source):
     domain = pick(row, DOMAIN_KEYS)
     if not domain:
         return None
     price = to_price(pick(row, PRICE_KEYS))
+    adult = pick(row, ADULT_KEYS)
     return {
         "domain": str(domain).strip().lower(),
         "source": source,
@@ -138,7 +167,53 @@ def normalise(row, source):
         "price_usd": price,
         "bids": "" if pick(row, BIDS_KEYS) is None else pick(row, BIDS_KEYS),
         "ends": pick(row, END_KEYS) or "",
+        "tld_count": int(best(row, TLDCOUNT_KEYS)),
+        "search_volume": int(best(row, VOLUME_KEYS)),
+        "age_years": int(best(row, AGE_KEYS)),
+        "ref_domains": int(best(row, REFDOM_KEYS)),
+        "adult": str(adult).lower() in ("true", "1", "yes"),
     }
+
+
+# ---------- Dictionary: keep only real words or clean two-word combos ----------
+WORDS = set()
+SHORT_OK = {"go", "my", "ai", "up", "on", "in", "me", "we", "us", "to", "by", "do", "be", "hi"}
+
+
+def load_words():
+    for path in ["/usr/share/dict/american-english", "/usr/share/dict/words"]:
+        try:
+            for w in Path(path).read_text(encoding="utf-8", errors="ignore").split():
+                w = w.strip().lower()
+                if w.isascii() and w.isalpha() and len(w) >= 3 and "'" not in w:
+                    WORDS.add(w)
+        except OSError:
+            continue
+    log(f"Dictionary words loaded: {len(WORDS)}")
+
+
+def is_word(w):
+    return w in WORDS or w in SHORT_OK
+
+
+def split_words(sld):
+    """Return 'word' or 'word+word' if the name is one or two real words, else ''."""
+    if sld in WORDS:
+        return sld
+    for i in range(2, len(sld) - 1):
+        a, b = sld[:i], sld[i:]
+        if is_word(a) and is_word(b) and (len(a) >= 3 or len(b) >= 3):
+            return f"{a}+{b}"
+    # three parts, e.g. park+and+charge
+    for i in range(2, len(sld) - 3):
+        for j in range(i + 1, len(sld) - 1):
+            a, b, c = sld[:i], sld[i:j], sld[j:]
+            if is_word(a) and is_word(c) and (b in CONNECTORS or is_word(b)) and len(a) >= 3 and len(c) >= 3:
+                return f"{a}+{b}+{c}"
+    return ""
+
+
+CONNECTORS = {"and", "n", "the", "for", "of", "my", "to", "in", "on", "or"}
 
 
 # ---------- Sources ----------
@@ -227,6 +302,7 @@ def load_dynadot():
 def main():
     OUT.mkdir(exist_ok=True)
     started = time.time()
+    load_words()
     all_rows = load_godaddy() + load_dynadot()
     log(f"Total records downloaded: {len(all_rows)}")
 
@@ -237,29 +313,46 @@ def main():
             continue
         seen.add(d)
         ok, tld = passes_hard_filters(d)
-        if not ok:
+        if not ok or r["adult"]:
             continue
+        sld = d.split(".", 1)[0]
+        words = split_words(sld) if WORDS else ""
+        if WORDS and not words:
+            continue                      # not one or two real words
+        r["words"] = words
+        # Signal score: how many other extensions are taken, real search demand, age, links.
+        import math
+        r["signal_score"] = round(
+            min(r["tld_count"], 25) * 2
+            + math.log10(r["search_volume"] + 1) * 8
+            + min(r["age_years"], 20) * 0.5
+            + math.log10(r["ref_domains"] + 1) * 3
+            + (5 if "+" not in words else 0),   # single real word bonus
+            1,
+        )
         if tld in WATCH_TLDS:
             watch.append(r)
             continue
         if r["price_usd"] is None or r["price_usd"] > MAX_PRICE_USD:
             continue
+        if r["tld_count"] < 2 and r["search_volume"] == 0:
+            continue                      # no sign anyone else wants this keyword
         buy.append(r)
 
-    # Shorter names first, then cheaper.
-    buy.sort(key=lambda r: (len(r["domain"]), r["price_usd"] or 0))
-    watch.sort(key=lambda r: len(r["domain"]))
+    buy.sort(key=lambda r: (-r["signal_score"], r["price_usd"] or 0))
+    watch.sort(key=lambda r: -r["signal_score"])
     buy, watch = buy[:MAX_ROWS], watch[:MAX_AI_ROWS]
 
-    fields = ["domain", "source", "type", "price_usd", "bids", "ends"]
+    fields = ["domain", "words", "signal_score", "source", "type", "price_usd", "bids", "ends",
+              "tld_count", "search_volume", "age_years", "ref_domains"]
     for path, rows in [(OUT / "candidates.csv", buy), (OUT / "ai_watch.csv", watch)]:
         with open(path, "w", newline="", encoding="utf-8") as f:
-            w = csv.DictWriter(f, fieldnames=fields)
+            w = csv.DictWriter(f, fieldnames=fields, extrasaction="ignore")
             w.writeheader()
             w.writerows(rows)
 
     log(f"Shortlist: {len(buy)} buy candidates (.com/.si <= ${MAX_PRICE_USD:.0f}), "
-        f"{len(watch)} .ai watch names. Took {time.time() - started:.0f}s")
+        f"{len(watch)} .ai watch names (out of {len(seen)} unique domains). Took {time.time() - started:.0f}s")
     (OUT / "run_log.txt").write_text(
         f"Updated (UTC): {datetime.now(timezone.utc).isoformat()}\n" + "\n".join(log_lines) + "\n",
         encoding="utf-8",
