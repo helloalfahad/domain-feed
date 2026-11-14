@@ -117,7 +117,6 @@ weekitty.com,wee+kitty,71.8,GoDaddy,BuyNow,30.0,0,2026-11-14T16:18:00Z,26,20,8,2
 voleve.com,vol+eve,71.8,GoDaddy,BuyNow,40.0,0,2026-11-14T20:51:00Z,48,20,1,3709
 baybarber.com,bay+barber,71.6,GoDaddy,Bid,1.0,0,2026-11-16T19:13:00Z,50,10,4,5633
 bookjewel.com,book+jewel,71.6,GoDaddy,Bid,1.0,0,2026-11-19T16:27:00Z,29,10,7,1740
-hellauto.com,hell+auto,71.5,GoDaddy,Bid,1.0,0,2026-11-23T19:04:00Z,111,20,2,2046
 minoven.com,min+oven,71.3,GoDaddy,Bid,1.0,0,2026-11-17T16:17:00Z,36,20,2,1737
 theabbeys.com,the+abbeys,71.2,GoDaddy,Bid,1.0,0,2026-11-21T19:03:00Z,33,0,26,5312
 negrot.com,neg+rot,71.1,GoDaddy,Bid,1.0,0,2026-11-18T18:56:00Z,354,20,1,2218
@@ -319,36 +318,60 @@ wanpot.com,wan+pot,66.3,GoDaddy,Bid,1.0,0,2026-11-17T19:11:00Z,42,0,13,1886
 dotsandline.com,dots+and+line,66.3,GoDaddy,Bid,1.0,0,2026-11-18T19:22:00Z,50,0,14,1233
 doneproperties.com,done+properties,66.3,GoDaddy,Bid,1.0,0,2026-11-18T20:24:00Z,27,0,13,1915
 sagabet.com,sag+abet,66.3,GoDaddy,Bid,1.0,0,2026-11-19T16:14:00Z,37,0,13,1891
+rosebake.com,rose+bake,66.3,GoDaddy,BuyNow,50.0,0,2026-11-14T19:07:00Z,240,0,13,1855
+gaseye.com,gas+eye,93.4,DropCatch,PrivateSeller (price on site),,,2026-11-17,46,0,0,0
+designsart.com,designs+art,90.4,DropCatch,PrivateSeller (price on site),,,2026-11-16,183,0,0,0
+activespray.com,active+spray,87.2,DropCatch,Dropped (price on site),,,2026-11-16,40,0,0,0
+corecheckout.com,core+checkout,69.3,DropCatch,PrivateSeller (price on site),,,2026-11-16,18,0,0,0
+catsworks.com,cats+works,69.0,DropCatch,PrivateSeller (price on site),,,2026-11-16,14,0,0,0
+bestcalcium.com,best+calcium,62.3,DropCatch,PrivateSeller (price on site),,,2026-11-16,12,0,0,0
+bestreform.com,best+reform,54.2,DropCatch,PrivateSeller (price on site),,,2026-11-16,6,0,0,0
+akinteam.com,akin+team,52.6,DropCatch,PreRelease (price on site),,,2026-11-19,7,0,0,0
+beesdrop.com,bees+drop,51.4,DropCatch,PreRelease (price on site),,,2026-11-20,7,0,0,0
+workworkers.com,work+workers,50.0,DropCatch,PreRelease (price on site),,,2026-11-16,3,0,0,0
+mayoonline.com,mayo+online,48.5,DropCatch,PrivateSeller (price on site),,,2026-11-16,6,0,0,0
+coinpretty.com,coin+pretty,47.9,DropCatch,PreRelease (price on site),,,2026-11-19,4,0,0,0
+joytooth.com,joy+tooth,47.7,DropCatch,PrivateSeller (price on site),,,2026-11-16,6,0,0,0
 pointdays.com,point+days,47.3,DropCatch,PrivateSeller (price on site),,,2026-11-16,0,0,0,0
 knownmen.com,known+men,47.1,DropCatch,PreRelease (price on site),,,2026-11-18,0,0,0,0
 groupgreat.com,group+great,47.0,DropCatch,PrivateSeller (price on site),,,2026-11-16,0,0,0,0
 closeend.com,close+end,46.9,DropCatch,PrivateSeller (price on site),,,2026-11-18,0,0,0,0
 thankbit.com,thank+bit,46.9,DropCatch,PreRelease (price on site),,,2026-11-18,0,0,0,0
+giftedtrust.com,gifted+trust,46.8,DropCatch,PrivateSeller (price on site),,,2026-11-16,5,0,0,0
 waterhand.com,water+hand,46.8,DropCatch,PrivateSeller (price on site),,,2026-11-16,0,0,0,0
 gamesnplay.com,games+n+play,46.7,DropCatch,PreRelease (price on site),,,2026-11-18,0,0,0,0
 stateofhigh.com,state+of+high,46.7,DropCatch,PreRelease (price on site),,,2026-11-18,0,0,0,0
+bestunions.com,best+unions,46.7,DropCatch,PrivateSeller (price on site),,,2026-11-16,3,0,0,0
 niceyears.com,nice+years,46.7,DropCatch,PreRelease (price on site),,,2026-11-23,0,0,0,0
+peaklance.com,peak+lance,46.6,DropCatch,PrivateSeller (price on site),,,2026-11-16,6,0,0,0
 soonopen.com,soon+open,46.6,DropCatch,PrivateSeller (price on site),,,2026-11-16,0,0,0,0
 largewhite.com,large+white,46.5,DropCatch,PrivateSeller (price on site),,,2026-11-24,0,0,0,0
 moneyonpay.com,money+on+pay,46.5,DropCatch,PreRelease (price on site),,,2026-11-20,0,0,0,0
 asktheman.com,ask+the+man,46.5,DropCatch,PrivateSeller (price on site),,,2026-11-17,0,0,0,0
 landtry.com,land+try,46.5,DropCatch,PrivateSeller (price on site),,,2026-11-16,0,0,0,0
-feelwatch.com,feel+watch,46.5,DropCatch,Dropped (price on site),,,2026-11-18,0,0,0,0
-agepeople.com,age+people,46.4,DropCatch,PreRelease (price on site),,,2026-11-20,0,0,0,0
-stopthemoney.com,stop+the+money,46.4,DropCatch,PreRelease (price on site),,,2026-11-20,0,0,0,0
-facesingle.com,face+single,46.3,DropCatch,PrivateSeller (price on site),,,2026-11-16,0,0,0,0
-ideatohome.com,idea+to+home,46.3,DropCatch,PreRelease (price on site),,,2026-11-20,0,0,0,0
-mindneeds.com,mind+needs,46.2,DropCatch,PrivateSeller (price on site),,,2026-11-18,0,0,0,0
-bodyandwork.com,body+and+work,46.2,DropCatch,PrivateSeller (price on site),,,2026-11-16,0,0,0,0
-needtostay.com,need+to+stay,46.1,DropCatch,PrivateSeller (price on site),,,2026-11-26,0,0,0,0
-prettyorder.com,pretty+order,46.1,DropCatch,PrivateSeller (price on site),,,2026-11-16,0,0,0,0
-booknorth.com,book+north,46.1,DropCatch,Dropped (price on site),,,2026-11-17,0,0,0,0
-mindtaking.com,mind+taking,46.0,DropCatch,PreRelease (price on site),,,2026-11-16,0,0,0,0
-newplayed.com,new+played,46.0,DropCatch,PreRelease (price on site),,,2026-11-24,0,0,0,0
-artforhelp.com,art+for+help,45.9,DropCatch,PreRelease (price on site),,,2026-11-17,0,0,0,0
-becomebuy.com,become+buy,45.9,DropCatch,PreRelease (price on site),,,2026-11-23,0,0,0,0
-meetmybest.com,meet+my+best,45.8,DropCatch,PrivateSeller (price on site),,,2026-11-16,0,0,0,0
-bodyformind.com,body+for+mind,45.8,DropCatch,PreRelease (price on site),,,2026-11-19,0,0,0,0
+centstation.com,cent+station,90.9,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-16,49,0,0,0
+goldenpool.com,golden+pool,88.7,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-17,34,0,0,0
+aurahall.com,aura+hall,84.6,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-16,47,0,0,0
+blockbuck.com,block+buck,78.8,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-17,21,0,0,0
+bananaedit.com,banana+edit,73.5,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-16,20,0,0,0
+bringthemusic.com,bring+the+music,68.9,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-16,12,0,0,0
+bidarts.com,bid+arts,68.4,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-18,15,0,0,0
+catalogdigital.com,catalog+digital,66.5,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-16,16,0,0,0
+conversionfast.com,conversion+fast,61.7,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-17,12,0,0,0
+chainbrands.com,chain+brands,60.6,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-16,12,0,0,0
+airfaction.com,air+faction,57.8,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-16,10,0,0,0
+coursesinfo.com,courses+info,57.0,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-18,10,0,0,0
+deeplaugh.com,deep+laugh,56.9,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-18,8,0,0,0
+bestrally.com,best+rally,55.5,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-15,7,0,0,0
+bestmoose.com,best+moose,53.8,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-15,8,0,0,0
+aboveodds.com,above+odds,53.7,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-15,7,0,0,0
+globalslim.com,global+slim,53.0,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-16,8,0,0,0
+droplanding.com,drop+landing,52.7,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-16,7,0,0,0
+pumpsupport.com,pump+support,52.6,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-15,6,0,0,0
+freeforces.com,free+forces,52.4,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-15,4,0,0,0
+abovetools.com,above+tools,50.9,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-17,5,0,0,0
+adaptvalue.com,adapt+value,49.7,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-15,6,0,0,0
+depositsite.com,deposit+site,49.0,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-15,5,0,0,0
 farguy.com,far+guy,47.7,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-16,0,0,0,0
 topmygame.com,top+my+game,47.3,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-15,0,0,0,0
 joboflife.com,job+of+life,47.3,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-17,0,0,0,0
@@ -359,6 +382,8 @@ lovemytime.com,love+my+time,47.0,DropCatch,DropCatch backorder $59 (pending dele
 stopfamily.com,stop+family,47.0,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-16,0,0,0,0
 jobnstory.com,job+n+story,47.0,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-16,0,0,0,0
 goodinplay.com,good+in+play,47.0,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-17,0,0,0,0
+leftshield.com,left+shield,47.0,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-18,3,0,0,0
+basissocial.com,basis+social,46.9,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-16,2,0,0,0
 postafter.com,post+after,46.9,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-18,0,0,0,0
 workingfar.com,working+far,46.8,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-16,0,0,0,0
 menshort.com,men+short,46.8,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-17,0,0,0,0
@@ -366,36 +391,11 @@ startmycall.com,start+my+call,46.7,DropCatch,DropCatch backorder $59 (pending de
 careofwomen.com,care+of+women,46.7,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-16,0,0,0,0
 newsstates.com,news+states,46.7,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-16,0,0,0,0
 daysonair.com,days+on+air,46.7,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-17,0,0,0,0
-winmyshit.com,win+my+shit,46.7,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-17,0,0,0,0
 findthecity.com,find+the+city,46.7,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-17,0,0,0,0
 moneyjohn.com,money+john,46.7,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-18,0,0,0,0
 startofline.com,start+of+line,46.7,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-18,0,0,0,0
 bookofhelp.com,book+of+help,46.6,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-15,0,0,0,0
+deepforever.com,deep+forever,46.6,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-17,3,0,0,0
 worktobook.com,work+to+book,46.6,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-18,0,0,0,0
 booklevel.com,book+level,46.5,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-15,0,0,0,0
 foodonlife.com,food+on+life,46.5,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-16,0,0,0,0
-duetolove.com,due+to+love,46.5,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-18,0,0,0,0
-supportparty.com,support+party,46.4,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-15,0,0,0,0
-bestonbuy.com,best+on+buy,46.4,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-16,0,0,0,0
-highonchange.com,high+on+change,46.4,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-16,0,0,0,0
-lawfine.com,law+fine,46.4,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-16,0,0,0,0
-placenbuy.com,place+n+buy,46.4,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-17,0,0,0,0
-wholepast.com,whole+past,46.4,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-18,0,0,0,0
-goingalong.com,going+along,46.4,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-18,0,0,0,0
-fightmen.com,fight+men,46.3,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-15,0,0,0,0
-booknact.com,book+n+act,46.3,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-16,0,0,0,0
-funinwork.com,fun+in+work,46.3,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-16,0,0,0,0
-agomatter.com,ago+matter,46.3,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-17,0,0,0,0
-guyandguy.com,guy+and+guy,46.3,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-17,0,0,0,0
-countrywhite.com,country+white,46.3,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-18,0,0,0,0
-mindthework.com,mind+the+work,46.2,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-15,0,0,0,0
-basedwatch.com,based+watch,46.2,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-15,0,0,0,0
-bookmyhand.com,book+my+hand,46.2,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-15,0,0,0,0
-onceshot.com,once+shot,46.2,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-15,0,0,0,0
-nicesix.com,nice+six,46.2,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-17,0,0,0,0
-topandson.com,top+and+son,46.2,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-17,0,0,0,0
-eyesread.com,eyes+read,46.2,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-17,0,0,0,0
-moneycause.com,money+cause,46.2,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-18,0,0,0,0
-believeblack.com,believe+black,46.2,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-18,0,0,0,0
-playingteam.com,playing+team,46.1,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-15,0,0,0,0
-careonhealth.com,care+on+health,46.1,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-15,0,0,0,0
