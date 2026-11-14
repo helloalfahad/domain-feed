@@ -1,13 +1,14 @@
-Updated (UTC): 2026-11-14T09:53:53.305674+00:00
-[09:51:55] GoDaddy metadata.json ok, 12 json.zip names found
-[09:52:25] GoDaddy all_biddable_auctions.json.zip:all_biddable_auctions.json -> 937313 records
-[09:53:09] GoDaddy all_expiring_auctions.json.zip:all_expiring_auctions.json -> 1308961 records
-[09:53:23] GoDaddy all_listings_ending_today.json.zip:all_listings_ending_today.json -> 430830 records
-[09:53:25] GoDaddy auctions_ending_today.json.zip:auctions_ending_today.json -> 58024 records
-[09:53:27] GoDaddy auctions_ending_tomorrow.json.zip:auctions_ending_tomorrow.json -> 70601 records
-[09:53:38] GoDaddy closeout_listings.json.zip:closeout_listings.json -> 372806 records
-[09:53:38] GoDaddy record keys seen: ['domainName', 'link', 'auctionType', 'auctionEndTime', 'price', 'numberOfBids', 'domainAge', 'pageviews', 'valuation', 'isAdult', 'majesticTf', 'majesticCf', 'majesticBacklinks', 'majesticReferringDomains', 'exactMatchTlds', 'keywordRegistrations', 'developedTlds', 'semrushAs', 'semrushReferringDomains', 'semrushBacklinks', 'semrushIndexedPages', 'semrushTopReferringDomains', 'semrushSearchVolume', 'semrushCpc']
-[09:53:40] Dynadot CSV columns: ['Domain', 'Bid Price', 'Bid Price Currency', 'Bids', 'Bidders', 'Renewal Price', ' Renewal Price Currency', 'End Time', 'End Timestamp', 'Revenue', 'Revenue Currency', 'Visitors', 'Links', 'Age', ' DotDb Tld Count', ' Appraisal', ' Appraisal Currency']
-[09:53:49] Dynadot: 463755 records
-[09:53:49] Total records downloaded: 3642290
-[09:53:53] Shortlist: 400 buy candidates (.com/.si <= $50), 0 .ai watch names. Took 118s
+Updated (UTC): 2026-11-14T10:28:33.794386+00:00
+[10:26:37] Dictionary words loaded: 73133
+[10:26:38] GoDaddy metadata.json ok, 12 json.zip names found
+[10:27:06] GoDaddy all_biddable_auctions.json.zip:all_biddable_auctions.json -> 937313 records
+[10:27:47] GoDaddy all_expiring_auctions.json.zip:all_expiring_auctions.json -> 1308961 records
+[10:28:00] GoDaddy all_listings_ending_today.json.zip:all_listings_ending_today.json -> 430830 records
+[10:28:03] GoDaddy auctions_ending_today.json.zip:auctions_ending_today.json -> 58024 records
+[10:28:05] GoDaddy auctions_ending_tomorrow.json.zip:auctions_ending_tomorrow.json -> 70601 records
+[10:28:16] GoDaddy closeout_listings.json.zip:closeout_listings.json -> 372806 records
+[10:28:16] GoDaddy record keys seen: ['domainName', 'link', 'auctionType', 'auctionEndTime', 'price', 'numberOfBids', 'domainAge', 'pageviews', 'valuation', 'isAdult', 'majesticTf', 'majesticCf', 'majesticBacklinks', 'majesticReferringDomains', 'exactMatchTlds', 'keywordRegistrations', 'developedTlds', 'semrushAs', 'semrushReferringDomains', 'semrushBacklinks', 'semrushIndexedPages', 'semrushTopReferringDomains', 'semrushSearchVolume', 'semrushCpc']
+[10:28:18] Dynadot CSV columns: ['Domain', 'Bid Price', 'Bid Price Currency', 'Bids', 'Bidders', 'Renewal Price', ' Renewal Price Currency', 'End Time', 'End Timestamp', 'Revenue', 'Revenue Currency', 'Visitors', 'Links', 'Age', ' DotDb Tld Count', ' Appraisal', ' Appraisal Currency']
+[10:28:28] Dynadot: 464605 records
+[10:28:28] Total records downloaded: 3643140
+[10:28:33] Shortlist: 400 buy candidates (.com/.si <= $50), 0 .ai watch names (out of 1774724 unique domains). Took 116s
