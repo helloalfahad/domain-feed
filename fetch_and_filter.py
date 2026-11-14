@@ -1,9 +1,11 @@
 """
 Domain feed for Fahad's sleeper agent.
 
-Downloads public auction inventory (GoDaddy Auctions inventory files + Dynadot
-expired-auction CSV), applies the hard filters from the domain-investing-research
-skill, and writes a small shortlist the daily Claude agent can read.
+Downloads public auction inventory (GoDaddy Auctions inventory files, Dynadot
+expired-auction CSV, DropCatch's official auction list download, and - when an
+API key is set - Namecheap Market's official Auctions API), applies the hard
+filters from the domain-investing-research skill, and writes a small shortlist
+the daily Claude agent can read.
 
 Only the Python standard library is used, so GitHub Actions needs no installs.
 """
@@ -11,9 +13,13 @@ Only the Python standard library is used, so GitHub Actions needs no installs.
 import csv
 import io
 import json
+import math
+import os
 import re
 import sys
 import time
+import urllib.error
+import urllib.parse
 import urllib.request
 import zipfile
 from datetime import datetime, timezone
@@ -26,6 +32,9 @@ MAX_PRICE_USD = 50.0              # expired/auction budget cap
 MAX_SLD_LEN = 15                  # longest second-level name we keep
 MAX_ROWS = 400                    # cap the shortlist so the agent stays cheap
 MAX_AI_ROWS = 100
+DROPCATCH_MAX_USD = 60.0          # Fahad raised the cap to $60 for DropCatch only (standard .com backorder = $59)
+MAX_DC_AUCTION_ROWS = 30          # DropCatch auctions (current price only on the site)
+MAX_DC_BACKORDER_ROWS = 50        # DropCatch pending-delete list ($59 backorder, verified 2026-11-15)
 
 GODADDY_INDEX = "https://inventory.auctions.godaddy.com/"
 GODADDY_METADATA = "https://inventory.auctions.godaddy.com/metadata.json"
@@ -33,6 +42,24 @@ DYNADOT_CSV = (
     "https://www.dynadot.com/market/auction/auctions.csv"
     "?order_by=8&currency=USD&timezone=PST"
 )
+# DropCatch "Downloads" page (dropcatch.com/downloads): this endpoint returns a
+# short-lived link to the official auction list (CSV inside a zip, refreshed every 15 min).
+DROPCATCH_FILE_URL = (
+    "https://client.dropcatch.com/GetFileUrl"
+    "?FileType=csv&RequestType=Auction&AuctionType=AllAuctions"
+)
+# Pending-delete (backorder) list. Parameters taken from dropcatch.com/downloads site code and
+# tested 2026-11-15: RequestType=Dropping, BackorderDay=DaysOut0..DaysOut4 or AllDays.
+# File columns: Domain, TLD, Type, Drop Date. Min standard backorder for .com = $59.
+DROPCATCH_BACKORDER_URL = (
+    "https://client.dropcatch.com/GetFileUrl"
+    "?FileType=csv&RequestType=Dropping&BackorderDay=AllDays"
+)
+# Namecheap Market Auctions API (docs: https://aftermarketapi.namecheap.com/client/docs/).
+# Needs a key from the Namecheap Market Dashboard, stored as the GitHub secret
+# NAMECHEAP_MARKET_API_KEY. Without the key this source is skipped.
+NAMECHEAP_API = "https://aftermarketapi.namecheap.com/client/api/sales"
+NAMECHEAP_MAX_PAGES = 40          # 100 per page -> at most 4000 auctions per query
 
 OUT = Path("data")
 UA = "Mozilla/5.0 (domain-feed; personal research script)"
@@ -46,8 +73,8 @@ def log(msg):
     log_lines.append(line)
 
 
-def fetch(url, timeout=120):
-    req = urllib.request.Request(url, headers={"User-Agent": UA})
+def fetch(url, timeout=120, headers=None):
+    req = urllib.request.Request(url, headers={"User-Agent": UA, **(headers or {})})
     with urllib.request.urlopen(req, timeout=timeout) as r:
         return r.read()
 
@@ -99,7 +126,7 @@ DOMAIN_KEYS = ["domainname", "domain", "domain name", "name", "domain_name"]
 PRICE_KEYS = ["price", "bid price", "currentprice", "current price", "currentbid", "current bid",
               "minbid", "min bid", "bidprice", "buynowprice", "buy now price", "amount"]
 BIDS_KEYS = ["numberofbids", "bids", "bid count", "bidcount", "num bids"]
-END_KEYS = ["auctionendtime", "endtime", "end time", "end date", "enddate",
+END_KEYS = ["drop date", "auctionendtime", "endtime", "end time", "end date", "enddate",
             "auction end", "time left", "timeleft", "expires"]
 TYPE_KEYS = ["auctiontype", "type", "listingtype"]
 
@@ -126,10 +153,11 @@ def to_price(val):
         return None
 
 
-TLDCOUNT_KEYS = ["dotdb tld count", "keywordregistrations", "exactmatchtlds", "developedtlds"]
-VOLUME_KEYS = ["semrushsearchvolume", "search volume"]
+TLDCOUNT_KEYS = ["dotdb tld count", "keywordregistrations", "exactmatchtlds", "developedtlds",
+                 "extensionstaken"]
+VOLUME_KEYS = ["semrushsearchvolume", "search volume", "keywordsearchcount"]
 AGE_KEYS = ["domainage", "age"]
-REFDOM_KEYS = ["majesticreferringdomains", "semrushreferringdomains", "links"]
+REFDOM_KEYS = ["majesticreferringdomains", "semrushreferringdomains", "links", "backlinkscount"]
 ADULT_KEYS = ["isadult"]
 
 
@@ -306,15 +334,104 @@ def load_dynadot():
     return rows
 
 
+def load_dropcatch(url=DROPCATCH_FILE_URL, kind="auction"):
+    """Official DropCatch auction list. It has no prices or metrics, only
+    Domain, TLD, Type (Dropped / PreRelease / PrivateSeller) and Auction End."""
+    rows = []
+    try:
+        meta = json.loads(fetch(url, timeout=60, headers={
+            "Accept": "application/json",
+            "Origin": "https://www.dropcatch.com",
+            "Referer": "https://www.dropcatch.com/downloads",
+        }))
+        file_url = (meta.get("result") or {}).get("fileUrl")
+        if not file_url:
+            log(f"DropCatch: no file link in response: {str(meta)[:200]}")
+            return rows
+        raw = fetch(file_url, timeout=300)
+        with zipfile.ZipFile(io.BytesIO(raw)) as z:
+            name = next(n for n in z.namelist() if n.lower().endswith(".csv"))
+            text = z.read(name).decode("utf-8-sig", "ignore")
+        # The file starts with a notice line ("****Auction lists are generated...") before the header.
+        lines = text.splitlines()
+        start = next((i for i, l in enumerate(lines) if l.lower().startswith("domain,")), 0)
+        reader = csv.DictReader(lines[start:])
+        log(f"DropCatch file {name}, columns: {reader.fieldnames}")
+        for rec in reader:
+            r = normalise(rec, "DropCatch")
+            if r:
+                r["no_metrics"] = kind
+                rows.append(r)
+        log(f"DropCatch {kind}: {len(rows)} records")
+    except Exception as e:
+        log(f"DropCatch {kind} download failed: {e}")
+    return rows
+
+
+def load_namecheap():
+    """Namecheap Market Auctions API. Skipped when NAMECHEAP_MARKET_API_KEY is not set."""
+    key = os.environ.get("NAMECHEAP_MARKET_API_KEY", "").strip()
+    if not key:
+        log("Namecheap: skipped (NAMECHEAP_MARKET_API_KEY secret not set)")
+        return []
+    headers = {"Authorization": f"Bearer {key}", "Accept": "application/json"}
+    queries = [
+        # Buy extensions inside the budget.
+        {"tld": ",".join(sorted(BUY_TLDS)), "price": f"_{int(MAX_PRICE_USD)}",
+         "nameLength": f"5_{MAX_SLD_LEN}"},
+        # .ai watchlist: short names only, any price.
+        {"tld": ",".join(sorted(WATCH_TLDS)), "nameLength": "5_8"},
+    ]
+    rows = []
+    now_year = datetime.now(timezone.utc).year
+    for q in queries:
+        params = {**q, "noHyphens": "true", "noNumbers": "true", "nsfw": "false",
+                  "pageSize": "100", "orderBy": "end_time", "direction": "asc"}
+        cursor, pages, n = None, 0, 0
+        try:
+            while pages < NAMECHEAP_MAX_PAGES:
+                if cursor:
+                    params["cursor"] = cursor
+                url = NAMECHEAP_API + "?" + urllib.parse.urlencode(params)
+                data = json.loads(fetch(url, timeout=60, headers=headers))
+                for rec in data.get("items") or []:
+                    rec = dict(rec)
+                    reg = str(rec.get("registeredDate") or "")[:4]
+                    if reg.isdigit():
+                        rec["age"] = max(0, now_year - int(reg))
+                    rec["type"] = rec.get("saleType") or rec.get("auctionType") or ""
+                    r = normalise(rec, "Namecheap")
+                    if r:
+                        rows.append(r)
+                        n += 1
+                pages += 1
+                cursor = data.get("nextCursor")
+                if not data.get("hasMore") or not cursor:
+                    break
+                time.sleep(0.5)               # stay gentle with the API
+            log(f"Namecheap tld={q['tld']}: {n} records ({pages} pages)")
+        except urllib.error.HTTPError as e:
+            body = e.read()[:200].decode("utf-8", "ignore")
+            log(f"Namecheap API error {e.code} for tld={q['tld']}: {body}")
+            if e.code in (401, 403):
+                break                         # bad key or phone not verified; no point retrying
+        except Exception as e:
+            log(f"Namecheap API failed for tld={q['tld']}: {e}")
+    return rows
+
+
 # ---------- Main ----------
 def main():
     OUT.mkdir(exist_ok=True)
     started = time.time()
     load_words()
-    all_rows = load_godaddy() + load_dynadot()
+    # Sources with prices and metrics come first, so a domain listed in several
+    # places keeps the richer record.
+    all_rows = (load_godaddy() + load_dynadot() + load_namecheap() + load_dropcatch()
+                + load_dropcatch(DROPCATCH_BACKORDER_URL, "backorder"))
     log(f"Total records downloaded: {len(all_rows)}")
 
-    seen, buy, watch = set(), [], []
+    seen, buy, watch, dc_auction, dc_backorder = set(), [], [], [], []
     for r in all_rows:
         d = r["domain"]
         if d in seen:
@@ -328,8 +445,22 @@ def main():
         if WORDS and not words:
             continue                      # not one or two real words
         r["words"] = words
+        if r.get("no_metrics"):
+            # DropCatch: no price or metrics in the file. Keep clean real-word names in
+            # their own slots; the agent checks the live price on dropcatch.com.
+            if tld in WATCH_TLDS:
+                continue
+            r["signal_score"] = round((20 if "+" not in words else 10) + (15 - len(sld)), 1)
+            if r["no_metrics"] == "backorder":
+                r["price_usd"] = 59
+                r["type"] = "DropCatch backorder $59 (pending delete)"
+                dc_backorder.append(r)
+            else:
+                r["price_usd"] = ""
+                r["type"] = f"{r['type']} (price on site)".strip()
+                dc_auction.append(r)
+            continue
         # Signal score: how many other extensions are taken, real search demand, age, links.
-        import math
         r["signal_score"] = round(
             min(r["tld_count"], 25) * 2
             + math.log10(r["search_volume"] + 1) * 8
@@ -349,7 +480,11 @@ def main():
 
     buy.sort(key=lambda r: (-r["signal_score"], r["price_usd"] or 0))
     watch.sort(key=lambda r: -r["signal_score"])
-    buy, watch = buy[:MAX_ROWS], watch[:MAX_AI_ROWS]
+    dc_auction.sort(key=lambda r: -r["signal_score"])
+    dc_backorder.sort(key=lambda r: -r["signal_score"])
+    dc = dc_auction[:MAX_DC_AUCTION_ROWS] + dc_backorder[:MAX_DC_BACKORDER_ROWS]
+    buy = buy[:MAX_ROWS - len(dc)] + dc
+    watch = watch[:MAX_AI_ROWS]
 
     fields = ["domain", "words", "signal_score", "source", "type", "price_usd", "bids", "ends",
               "tld_count", "search_volume", "age_years", "ref_domains"]
@@ -359,7 +494,11 @@ def main():
             w.writeheader()
             w.writerows(rows)
 
-    log(f"Shortlist: {len(buy)} buy candidates (.com/.si <= ${MAX_PRICE_USD:.0f}), "
+    by_source = {}
+    for r in buy:
+        by_source[r["source"]] = by_source.get(r["source"], 0) + 1
+    log(f"Shortlist by source: {by_source}")
+    log(f"Shortlist: {len(buy)} buy candidates (.com/.si <= ${MAX_PRICE_USD:.0f}; DropCatch <= ${DROPCATCH_MAX_USD:.0f}), "
         f"{len(watch)} .ai watch names (out of {len(seen)} unique domains). Took {time.time() - started:.0f}s")
     (OUT / "run_log.txt").write_text(
         f"Updated (UTC): {datetime.now(timezone.utc).isoformat()}\n" + "\n".join(log_lines) + "\n",
