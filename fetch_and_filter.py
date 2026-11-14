@@ -212,7 +212,7 @@ WORDS = set()
 SHORT_OK = {"go", "my", "up"}
 BLOCK_WORDS = {"ass", "sex", "porn", "xxx", "nude", "nudes", "slut", "milf", "fetish", "escort",
                "casino", "bet", "bets", "betting", "viagra", "cialis", "loan", "loans", "vape", "weed",
-               "kill", "drug", "drugs", "gun", "guns"}
+               "kill", "drug", "drugs", "gun", "guns", "shit", "fuck", "damn", "crap", "piss", "hell"}
 
 
 def load_words():
@@ -455,6 +455,16 @@ def main():
     log(f"Total records downloaded: {len(all_rows)}")
 
     seen, buy, watch, dc_auction, dc_backorder = set(), [], [], [], []
+    # Borrow demand data for DropCatch names: GoDaddy/Dynadot rows carry "how many extensions of
+    # this keyword are registered" (keywordRegistrations / DotDB TLD count) for millions of names.
+    # If the same keyword shows up there under any extension, reuse that number.
+    kw_tlds = {}
+    for r in all_rows:
+        if not r.get("no_metrics") and r["tld_count"]:
+            k = r["domain"].split(".", 1)[0]
+            if r["tld_count"] > kw_tlds.get(k, 0):
+                kw_tlds[k] = r["tld_count"]
+    log(f"Keyword demand map: {len(kw_tlds)} keywords")
     for r in all_rows:
         d = r["domain"]
         if d in seen:
@@ -491,6 +501,8 @@ def main():
                 r["signal_score"] = round(avg * 10 - (0 if len(core) == 1 else 5) - len(sld) * 0.3, 1)
             else:
                 r["signal_score"] = round((20 if len(parts) == 1 else 10) + (15 - len(sld)), 1)
+            r["tld_count"] = kw_tlds.get(sld, 0)
+            r["signal_score"] = round(r["signal_score"] + min(r["tld_count"], 25) * 2, 1)
             if r["no_metrics"] == "backorder" and r["ends"] and str(r["ends"])[:10] < DROP_CUTOFF:
                 continue                      # already dropped
             if r["no_metrics"] == "backorder":
