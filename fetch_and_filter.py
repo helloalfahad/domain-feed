@@ -26,7 +26,7 @@ except ImportError:
 import urllib.parse
 import urllib.request
 import zipfile
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 # ---------- Rules (from the skill; change here if Fahad's rules change) ----------
@@ -338,7 +338,23 @@ def load_dynadot():
     return rows
 
 
-TODAY = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+_now = datetime.now(timezone.utc)
+TODAY = _now.strftime("%Y-%m-%d")
+DROP_CUTOFF = TODAY if _now.hour < 12 else (_now + timedelta(days=1)).strftime("%Y-%m-%d")
+# Grammar words: very common, so word-frequency alone would push junk like "forwas" or "canwho" up.
+FUNCTION_WORDS = set("""a an the and or nor but so yet for of to in on at by with from as into onto upon than too
+very such only just also even still any all some each every both either neither not no yes this that these those
+there here be being been is are am was were has had have having do does did done doing can could would should will
+shall may might must he she it we you me him her his hers its our ours your yours their theirs them they us i my
+who whom whose which what when where why how whether because though although while again ever never always often
+own same other another much many more most less least few out off over under up down let lets said say says got
+went goes gone made make makes making used about around back then now well really against without within among
+between toward towards one two three four five first last next thing things something someone anything nothing
+everything anyone everyone come came comes take took get gets see saw seen know knew think thought want give gave
+look looked use way per via ok etc put puts set sets keep kept""".split())
+# Generic nouns: fine next to a real keyword, but a name made only of these is weak (dayswho, mantime).
+GENERIC_WORDS = set("""day days time times year years man men woman women people person world life good great best
+better new old high low big small long right left real true""".split())
 
 
 def load_dropcatch(url=DROPCATCH_FILE_URL, kind="auction"):
@@ -461,16 +477,21 @@ def main():
             # ~3 = rare, 5+ = everyday). Obscure words and inflections (forefeet, affronts) drop out.
             parts = words.split("+") if words else [sld]
             if zipf_frequency:
-                if parts[-1] in CONNECTORS:
-                    continue                  # "teefor", "illsay" style endings
-                zs = [zipf_frequency(w, "en") for w in parts if w not in CONNECTORS]
-                common = min(zs) if zs else 0
-                if common < (3.3 if len(parts) == 1 else 3.5):
-                    continue
-                r["signal_score"] = round(common * 10 - (0 if len(parts) == 1 else 5) - len(sld) * 0.3, 1)
+                if parts[0] in CONNECTORS or parts[-1] in CONNECTORS:
+                    continue                  # "teefor", "forwas" style
+                core = [w for w in parts if w not in CONNECTORS]
+                if any(w in FUNCTION_WORDS for w in core):
+                    continue                  # "canwho", "howour": grammar words, not a business name
+                if len(core) > 1 and all(w in GENERIC_WORDS for w in core):
+                    continue                  # "daysgood", "bestday"
+                zs = [min(zipf_frequency(w, "en"), 5.5) for w in core]
+                if not zs or min(zs) < (3.3 if len(core) == 1 else 3.5):
+                    continue                  # rare words / odd inflections (forefeet, affronts)
+                avg = sum(zs) / len(zs)
+                r["signal_score"] = round(avg * 10 - (0 if len(core) == 1 else 5) - len(sld) * 0.3, 1)
             else:
                 r["signal_score"] = round((20 if len(parts) == 1 else 10) + (15 - len(sld)), 1)
-            if r["no_metrics"] == "backorder" and r["ends"] and str(r["ends"])[:10] < TODAY:
+            if r["no_metrics"] == "backorder" and r["ends"] and str(r["ends"])[:10] < DROP_CUTOFF:
                 continue                      # already dropped
             if r["no_metrics"] == "backorder":
                 r["price_usd"] = 59
