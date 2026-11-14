@@ -20,6 +20,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: Install English word list
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq wamerican
       - name: Fetch and filter auctions
         run: python fetch_and_filter.py
       - name: Commit shortlist
