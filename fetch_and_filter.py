@@ -177,14 +177,20 @@ def normalise(row, source):
 
 # ---------- Dictionary: keep only real words or clean two-word combos ----------
 WORDS = set()
-SHORT_OK = {"go", "my", "ai", "up", "on", "in", "me", "we", "us", "to", "by", "do", "be", "hi"}
+SHORT_OK = {"go", "my", "up"}
+BLOCK_WORDS = {"ass", "sex", "porn", "xxx", "nude", "nudes", "slut", "milf", "fetish", "escort",
+               "casino", "bet", "bets", "betting", "viagra", "cialis", "loan", "loans", "vape", "weed",
+               "kill", "drug", "drugs", "gun", "guns"}
 
 
 def load_words():
     for path in ["/usr/share/dict/american-english", "/usr/share/dict/words"]:
         try:
-            for w in Path(path).read_text(encoding="utf-8", errors="ignore").split():
-                w = w.strip().lower()
+            for raw in Path(path).read_text(encoding="utf-8", errors="ignore").split():
+                raw = raw.strip()
+                if not raw or raw[0].isupper():      # skip names like Gail, Ron, Jimmie
+                    continue
+                w = raw.lower()
                 if w.isascii() and w.isalpha() and len(w) >= 3 and "'" not in w:
                     WORDS.add(w)
         except OSError:
@@ -199,16 +205,18 @@ def is_word(w):
 def split_words(sld):
     """Return 'word' or 'word+word' if the name is one or two real words, else ''."""
     if sld in WORDS:
-        return sld
+        return "" if sld in BLOCK_WORDS else sld
     for i in range(2, len(sld) - 1):
         a, b = sld[:i], sld[i:]
-        if is_word(a) and is_word(b) and (len(a) >= 3 or len(b) >= 3):
+        if a in BLOCK_WORDS or b in BLOCK_WORDS:
+            continue
+        if (a in WORDS or a in SHORT_OK) and b in WORDS and len(b) >= 3:
             return f"{a}+{b}"
     # three parts, e.g. park+and+charge
     for i in range(2, len(sld) - 3):
         for j in range(i + 1, len(sld) - 1):
             a, b, c = sld[:i], sld[i:j], sld[j:]
-            if is_word(a) and is_word(c) and (b in CONNECTORS or is_word(b)) and len(a) >= 3 and len(c) >= 3:
+            if a in WORDS and c in WORDS and b in CONNECTORS and not ({a, c} & BLOCK_WORDS):
                 return f"{a}+{b}+{c}"
     return ""
 
