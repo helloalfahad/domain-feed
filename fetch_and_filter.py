@@ -19,6 +19,10 @@ import re
 import sys
 import time
 import urllib.error
+try:                                   # word commonness (installed in feed.yml: pip install wordfreq)
+    from wordfreq import zipf_frequency
+except ImportError:
+    zipf_frequency = None
 import urllib.parse
 import urllib.request
 import zipfile
@@ -334,6 +338,9 @@ def load_dynadot():
     return rows
 
 
+TODAY = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+
+
 def load_dropcatch(url=DROPCATCH_FILE_URL, kind="auction"):
     """Official DropCatch auction list. It has no prices or metrics, only
     Domain, TLD, Type (Dropped / PreRelease / PrivateSeller) and Auction End."""
@@ -450,7 +457,21 @@ def main():
             # their own slots; the agent checks the live price on dropcatch.com.
             if tld in WATCH_TLDS:
                 continue
-            r["signal_score"] = round((20 if "+" not in words else 10) + (15 - len(sld)), 1)
+            # No metrics in DropCatch files, so rank by how common the words are (wordfreq Zipf:
+            # ~3 = rare, 5+ = everyday). Obscure words and inflections (forefeet, affronts) drop out.
+            parts = words.split("+") if words else [sld]
+            if zipf_frequency:
+                if parts[-1] in CONNECTORS:
+                    continue                  # "teefor", "illsay" style endings
+                zs = [zipf_frequency(w, "en") for w in parts if w not in CONNECTORS]
+                common = min(zs) if zs else 0
+                if common < (3.3 if len(parts) == 1 else 3.5):
+                    continue
+                r["signal_score"] = round(common * 10 - (0 if len(parts) == 1 else 5) - len(sld) * 0.3, 1)
+            else:
+                r["signal_score"] = round((20 if len(parts) == 1 else 10) + (15 - len(sld)), 1)
+            if r["no_metrics"] == "backorder" and r["ends"] and str(r["ends"])[:10] < TODAY:
+                continue                      # already dropped
             if r["no_metrics"] == "backorder":
                 r["price_usd"] = 59
                 r["type"] = "DropCatch backorder $59 (pending delete)"
