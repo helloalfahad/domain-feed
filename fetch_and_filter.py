@@ -38,7 +38,9 @@ MAX_ROWS = 400                    # cap the shortlist so the agent stays cheap
 MAX_AI_ROWS = 100
 DROPCATCH_MAX_USD = 60.0          # Fahad raised the cap to $60 for DropCatch only (standard .com backorder = $59)
 MAX_DC_AUCTION_ROWS = 30          # DropCatch auctions (current price only on the site)
-MAX_DC_BACKORDER_ROWS = 50        # DropCatch pending-delete list ($59 backorder, verified 2026-11-15)
+MAX_DC_BACKORDER_ROWS = 50
+SOURCE_QUOTA = {"GoDaddy": 200, "Dynadot": 100, "Namecheap": 20}   # of the 320 non-DropCatch slots
+ARCHIVE_TIME_BUDGET = 480         # seconds spent asking archive.org about shortlist names        # DropCatch pending-delete list ($59 backorder, verified 2026-11-15)
 
 GODADDY_INDEX = "https://inventory.auctions.godaddy.com/"
 GODADDY_METADATA = "https://inventory.auctions.godaddy.com/metadata.json"
@@ -338,6 +340,32 @@ def load_dynadot():
     return rows
 
 
+def add_archive_history(rows):
+    """Wayback Machine history for each shortlisted name (the cloud agent can't reach archive.org,
+    GitHub can). One capture per year: number of years with captures, first and last year.
+    0 years = never had a site. Old content type (adult/spam/pharma) still has to be eyeballed at
+    https://web.archive.org/web/*/<domain>."""
+    start, done = time.time(), 0
+    for r in rows:
+        if time.time() - start > ARCHIVE_TIME_BUDGET:
+            break
+        url = ("https://web.archive.org/cdx/search/cdx?url=" + urllib.parse.quote(r["domain"])
+               + "&output=json&fl=timestamp&filter=statuscode:200&collapse=timestamp:4")
+        try:
+            data = json.loads(fetch(url, timeout=20) or b"[]")
+            years = sorted({row[0][:4] for row in data[1:]}) if len(data) > 1 else []
+            r["archive_snapshots"] = len(years)
+            r["archive_first_year"] = years[0] if years else ""
+            r["archive_last_year"] = years[-1] if years else ""
+            done += 1
+        except Exception as e:
+            r["archive_snapshots"] = "error"
+            if "429" in str(e):
+                time.sleep(10)
+        time.sleep(0.8)
+    log(f"Archive history: {done}/{len(rows)} names checked in {time.time() - start:.0f}s")
+
+
 _now = datetime.now(timezone.utc)
 TODAY = _now.strftime("%Y-%m-%d")
 DROP_CUTOFF = TODAY if _now.hour < 12 else (_now + timedelta(days=1)).strftime("%Y-%m-%d")
@@ -537,11 +565,30 @@ def main():
     dc_auction.sort(key=lambda r: -r["signal_score"])
     dc_backorder.sort(key=lambda r: -r["signal_score"])
     dc = dc_auction[:MAX_DC_AUCTION_ROWS] + dc_backorder[:MAX_DC_BACKORDER_ROWS]
-    buy = buy[:MAX_ROWS - len(dc)] + dc
+    # Per-source quotas so one big source (GoDaddy) can't crowd out the others (Dynadot got 0
+    # slots on 2026-11-14/15). Slots a source can't fill go to the best leftovers of any source.
+    eligible = {}
+    for r in buy:
+        eligible[r["source"]] = eligible.get(r["source"], 0) + 1
+    log(f"Eligible before quotas: {eligible}")
+    room = MAX_ROWS - len(dc)
+    picked, used, leftover = [], {}, []
+    for r in buy:
+        q = SOURCE_QUOTA.get(r["source"], 0)
+        if used.get(r["source"], 0) < q and len(picked) < room:
+            picked.append(r)
+            used[r["source"]] = used.get(r["source"], 0) + 1
+        else:
+            leftover.append(r)
+    picked += leftover[:room - len(picked)]
+    picked.sort(key=lambda r: (-r["signal_score"], r["price_usd"] or 0))
+    buy = picked + dc
     watch = watch[:MAX_AI_ROWS]
+    add_archive_history(buy)
 
     fields = ["domain", "words", "signal_score", "source", "type", "price_usd", "bids", "ends",
-              "tld_count", "search_volume", "age_years", "ref_domains"]
+              "tld_count", "search_volume", "age_years", "ref_domains",
+              "archive_snapshots", "archive_first_year", "archive_last_year"]
     for path, rows in [(OUT / "candidates.csv", buy), (OUT / "ai_watch.csv", watch)]:
         with open(path, "w", newline="", encoding="utf-8") as f:
             w = csv.DictWriter(f, fieldnames=fields, extrasaction="ignore")
