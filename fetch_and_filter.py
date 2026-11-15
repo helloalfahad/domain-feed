@@ -41,7 +41,7 @@ MAX_DC_AUCTION_ROWS = 30          # DropCatch auctions (current price only on th
 MAX_DC_BACKORDER_ROWS = 50
 SOURCE_QUOTA = {"GoDaddy": 200, "Dynadot": 100, "Namecheap": 20}   # of the 320 non-DropCatch slots
 ARCHIVE_TIME_BUDGET = 480         # seconds spent asking archive.org about shortlist names
-ARCHIVE_WORKERS = 4               # parallel archive.org lookups (more risks HTTP 429)        # DropCatch pending-delete list ($59 backorder, verified 2026-11-15)
+ARCHIVE_WORKERS = 3               # parallel archive.org lookups (more risks HTTP 429)        # DropCatch pending-delete list ($59 backorder, verified 2026-11-15)
 
 GODADDY_INDEX = "https://inventory.auctions.godaddy.com/"
 GODADDY_METADATA = "https://inventory.auctions.godaddy.com/metadata.json"
@@ -341,20 +341,33 @@ def load_dynadot():
     return rows
 
 
+ARCHIVE_ERRORS = []
+
+
+def _wayback_year(domain, ts):
+    """Closest Wayback capture to timestamp ts, via the light 'availability' API (the CDX API
+    timed out / rate-limited for most names on 2026-11-15)."""
+    url = ("https://archive.org/wayback/available?url=" + urllib.parse.quote(domain)
+           + "&timestamp=" + ts)
+    data = json.loads(fetch(url, timeout=20) or b"{}")
+    snap = (data.get("archived_snapshots") or {}).get("closest") or {}
+    return str(snap.get("timestamp", ""))[:4]
+
+
 def _archive_one(r):
-    url = ("https://web.archive.org/cdx/search/cdx?url=" + urllib.parse.quote(r["domain"])
-           + "&output=json&fl=timestamp&filter=statuscode:200&collapse=timestamp:4")
-    for attempt in range(2):
+    for attempt in range(3):
         try:
-            data = json.loads(fetch(url, timeout=30) or b"[]")
-            years = sorted({row[0][:4] for row in data[1:]}) if len(data) > 1 else []
-            r["archive_snapshots"] = len(years)
-            r["archive_first_year"] = years[0] if years else ""
-            r["archive_last_year"] = years[-1] if years else ""
+            first = _wayback_year(r["domain"], "19960101")
+            last = _wayback_year(r["domain"], "20991231") if first else ""
+            r["archive_first_year"] = first
+            r["archive_last_year"] = last
+            # years spanned from first to last capture (0 = never archived)
+            r["archive_snapshots"] = (int(last) - int(first) + 1) if first and last else 0
             return True
         except Exception as e:
-            if "429" in str(e):
-                time.sleep(15)
+            if len(ARCHIVE_ERRORS) < 5:
+                ARCHIVE_ERRORS.append(str(e)[:120])
+            time.sleep(5 * (attempt + 1))
     r["archive_snapshots"] = "error"
     return False
 
@@ -387,6 +400,8 @@ def add_archive_history(rows):
             if time.time() - start > ARCHIVE_TIME_BUDGET + 60:
                 break
     log(f"Archive history: {done}/{len(rows)} names checked in {time.time() - start:.0f}s")
+    if ARCHIVE_ERRORS:
+        log(f"Archive sample errors: {ARCHIVE_ERRORS}")
 
 
 _now = datetime.now(timezone.utc)
