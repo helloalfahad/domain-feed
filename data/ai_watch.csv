@@ -1,1 +1,1 @@
-domain,words,signal_score,source,type,price_usd,bids,ends,tld_count,search_volume,age_years,ref_domains
+domain,words,signal_score,source,type,price_usd,bids,ends,tld_count,search_volume,age_years,ref_domains,archive_snapshots,archive_first_year,archive_last_year
