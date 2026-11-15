@@ -40,7 +40,8 @@ DROPCATCH_MAX_USD = 60.0          # Fahad raised the cap to $60 for DropCatch on
 MAX_DC_AUCTION_ROWS = 30          # DropCatch auctions (current price only on the site)
 MAX_DC_BACKORDER_ROWS = 50
 SOURCE_QUOTA = {"GoDaddy": 200, "Dynadot": 100, "Namecheap": 20}   # of the 320 non-DropCatch slots
-ARCHIVE_TIME_BUDGET = 480         # seconds spent asking archive.org about shortlist names        # DropCatch pending-delete list ($59 backorder, verified 2026-11-15)
+ARCHIVE_TIME_BUDGET = 480         # seconds spent asking archive.org about shortlist names
+ARCHIVE_WORKERS = 4               # parallel archive.org lookups (more risks HTTP 429)        # DropCatch pending-delete list ($59 backorder, verified 2026-11-15)
 
 GODADDY_INDEX = "https://inventory.auctions.godaddy.com/"
 GODADDY_METADATA = "https://inventory.auctions.godaddy.com/metadata.json"
@@ -340,29 +341,51 @@ def load_dynadot():
     return rows
 
 
-def add_archive_history(rows):
-    """Wayback Machine history for each shortlisted name (the cloud agent can't reach archive.org,
-    GitHub can). One capture per year: number of years with captures, first and last year.
-    0 years = never had a site. Old content type (adult/spam/pharma) still has to be eyeballed at
-    https://web.archive.org/web/*/<domain>."""
-    start, done = time.time(), 0
-    for r in rows:
-        if time.time() - start > ARCHIVE_TIME_BUDGET:
-            break
-        url = ("https://web.archive.org/cdx/search/cdx?url=" + urllib.parse.quote(r["domain"])
-               + "&output=json&fl=timestamp&filter=statuscode:200&collapse=timestamp:4")
+def _archive_one(r):
+    url = ("https://web.archive.org/cdx/search/cdx?url=" + urllib.parse.quote(r["domain"])
+           + "&output=json&fl=timestamp&filter=statuscode:200&collapse=timestamp:4")
+    for attempt in range(2):
         try:
-            data = json.loads(fetch(url, timeout=20) or b"[]")
+            data = json.loads(fetch(url, timeout=30) or b"[]")
             years = sorted({row[0][:4] for row in data[1:]}) if len(data) > 1 else []
             r["archive_snapshots"] = len(years)
             r["archive_first_year"] = years[0] if years else ""
             r["archive_last_year"] = years[-1] if years else ""
-            done += 1
+            return True
         except Exception as e:
-            r["archive_snapshots"] = "error"
             if "429" in str(e):
-                time.sleep(10)
-        time.sleep(0.8)
+                time.sleep(15)
+    r["archive_snapshots"] = "error"
+    return False
+
+
+def add_archive_history(rows):
+    """Wayback Machine history for shortlisted names (the cloud agent can't reach archive.org,
+    GitHub can). One capture per year: number of years with captures, first and last year.
+    0 years = never had a site. Old content type (adult/spam/pharma) still has to be eyeballed at
+    https://web.archive.org/web/*/<domain>. archive.org is slow, so names are checked in parallel
+    and in round-robin order across sources (best of each source first) within a time budget."""
+    from concurrent.futures import ThreadPoolExecutor, wait, FIRST_COMPLETED
+    by_src = {}
+    for r in rows:
+        by_src.setdefault(r["source"], []).append(r)
+    order, i = [], 0
+    while any(i < len(v) for v in by_src.values()):
+        for v in by_src.values():
+            if i < len(v):
+                order.append(v[i])
+        i += 1
+    start, done, pending, queue = time.time(), 0, set(), list(order)
+    with ThreadPoolExecutor(max_workers=ARCHIVE_WORKERS) as ex:
+        while queue or pending:
+            while queue and len(pending) < ARCHIVE_WORKERS and time.time() - start < ARCHIVE_TIME_BUDGET:
+                pending.add(ex.submit(_archive_one, queue.pop(0)))
+            if not pending:
+                break
+            finished, pending = wait(pending, timeout=5, return_when=FIRST_COMPLETED)
+            done += sum(1 for f in finished if f.result())
+            if time.time() - start > ARCHIVE_TIME_BUDGET + 60:
+                break
     log(f"Archive history: {done}/{len(rows)} names checked in {time.time() - start:.0f}s")
 
 
