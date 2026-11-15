@@ -1,21 +1,21 @@
-Updated (UTC): 2026-11-14T20:52:05.803868+00:00
-[20:49:53] Dictionary words loaded: 63746
-[20:49:53] GoDaddy metadata.json ok, 12 json.zip names found
-[20:50:23] GoDaddy all_biddable_auctions.json.zip:all_biddable_auctions.json -> 931288 records
-[20:51:05] GoDaddy all_expiring_auctions.json.zip:all_expiring_auctions.json -> 1303713 records
-[20:51:19] GoDaddy all_listings_ending_today.json.zip:all_listings_ending_today.json -> 444181 records
-[20:51:22] GoDaddy auctions_ending_today.json.zip:auctions_ending_today.json -> 70585 records
-[20:51:25] GoDaddy auctions_ending_tomorrow.json.zip:auctions_ending_tomorrow.json -> 97657 records
-[20:51:36] GoDaddy closeout_listings.json.zip:closeout_listings.json -> 373596 records
-[20:51:36] GoDaddy record keys seen: ['domainName', 'link', 'auctionType', 'auctionEndTime', 'price', 'numberOfBids', 'domainAge', 'pageviews', 'valuation', 'isAdult', 'majesticTf', 'majesticCf', 'majesticBacklinks', 'majesticReferringDomains', 'exactMatchTlds', 'keywordRegistrations', 'developedTlds', 'semrushAs', 'semrushReferringDomains', 'semrushBacklinks', 'semrushIndexedPages', 'semrushTopReferringDomains', 'semrushSearchVolume', 'semrushCpc']
-[20:51:37] Dynadot CSV columns: ['Domain', 'Bid Price', 'Bid Price Currency', 'Bids', 'Bidders', 'Renewal Price', ' Renewal Price Currency', 'End Time', 'End Timestamp', 'Revenue', 'Revenue Currency', 'Visitors', 'Links', 'Age', ' DotDb Tld Count', ' Appraisal', ' Appraisal Currency']
-[20:51:47] Dynadot: 434387 records
-[20:51:47] Namecheap: skipped (NAMECHEAP_MARKET_API_KEY secret not set)
-[20:51:47] DropCatch file Auction_Domains_AllAuctions_2026-11-14.csv, columns: ['Domain', 'TLD', 'Type', 'Auction End']
-[20:51:48] DropCatch auction: 37021 records
-[20:51:49] DropCatch file Dropping_Domains_All_2026-11-14.csv, columns: ['Domain', 'TLD', 'Type', 'Drop Date']
-[20:51:55] DropCatch backorder: 688644 records
-[20:51:55] Total records downloaded: 4381072
-[20:51:56] Keyword demand map: 1516561 keywords
-[20:52:05] Shortlist by source: {'GoDaddy': 320, 'DropCatch': 80}
-[20:52:05] Shortlist: 400 buy candidates (.com/.si <= $50; DropCatch <= $60), 0 .ai watch names (out of 2463563 unique domains). Took 133s
+Updated (UTC): 2026-11-15T01:54:37.162712+00:00
+[01:52:04] Dictionary words loaded: 63746
+[01:52:04] GoDaddy metadata.json ok, 12 json.zip names found
+[01:52:39] GoDaddy all_biddable_auctions.json.zip:all_biddable_auctions.json -> 931288 records
+[01:53:27] GoDaddy all_expiring_auctions.json.zip:all_expiring_auctions.json -> 1303713 records
+[01:53:44] GoDaddy all_listings_ending_today.json.zip:all_listings_ending_today.json -> 444181 records
+[01:53:47] GoDaddy auctions_ending_today.json.zip:auctions_ending_today.json -> 70585 records
+[01:53:50] GoDaddy auctions_ending_tomorrow.json.zip:auctions_ending_tomorrow.json -> 97657 records
+[01:54:03] GoDaddy closeout_listings.json.zip:closeout_listings.json -> 373596 records
+[01:54:03] GoDaddy record keys seen: ['domainName', 'link', 'auctionType', 'auctionEndTime', 'price', 'numberOfBids', 'domainAge', 'pageviews', 'valuation', 'isAdult', 'majesticTf', 'majesticCf', 'majesticBacklinks', 'majesticReferringDomains', 'exactMatchTlds', 'keywordRegistrations', 'developedTlds', 'semrushAs', 'semrushReferringDomains', 'semrushBacklinks', 'semrushIndexedPages', 'semrushTopReferringDomains', 'semrushSearchVolume', 'semrushCpc']
+[01:54:05] Dynadot CSV columns: ['Domain', 'Bid Price', 'Bid Price Currency', 'Bids', 'Bidders', 'Renewal Price', ' Renewal Price Currency', 'End Time', 'End Timestamp', 'Revenue', 'Revenue Currency', 'Visitors', 'Links', 'Age', ' DotDb Tld Count', ' Appraisal', ' Appraisal Currency']
+[01:54:17] Dynadot: 437772 records
+[01:54:17] Namecheap: skipped (NAMECHEAP_MARKET_API_KEY secret not set)
+[01:54:17] DropCatch file Auction_Domains_AllAuctions_2026-11-14.csv, columns: ['Domain', 'TLD', 'Type', 'Auction End']
+[01:54:18] DropCatch auction: 37988 records
+[01:54:18] DropCatch file Dropping_Domains_All_2026-11-14.csv, columns: ['Domain', 'TLD', 'Type', 'Drop Date']
+[01:54:25] DropCatch backorder: 688644 records
+[01:54:25] Total records downloaded: 4385424
+[01:54:27] Keyword demand map: 1515059 keywords
+[01:54:37] Shortlist by source: {'GoDaddy': 320, 'DropCatch': 80}
+[01:54:37] Shortlist: 400 buy candidates (.com/.si <= $50; DropCatch <= $60), 0 .ai watch names (out of 2467914 unique domains). Took 153s
