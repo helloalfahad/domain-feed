@@ -1,15 +1,15 @@
 domain,words,signal_score,source,type,price_usd,bids,ends,tld_count,search_volume,age_years,ref_domains,archive_snapshots,archive_first_year,archive_last_year
 manties.com,man+ties,94.0,GoDaddy,Bid,1.0,1,2026-11-19T16:35:00Z,39,1000,24,2161,2,2001,2002
-wannsee.com,wan+n+see,93.6,GoDaddy,Bid,1.0,1,2026-11-24T19:42:00Z,269,880,28,2247,17,2010,2026
+wannsee.com,wan+n+see,93.6,GoDaddy,Bid,1.0,1,2026-11-24T19:42:00Z,269,880,28,2247,0,,
 nevertel.com,never+tel,92.8,GoDaddy,Bid,1.0,0,2026-11-27T17:01:00Z,72,2900,12,1053,13,2013,2025
 beartic.com,bear+tic,91.9,GoDaddy,Bid,1.0,0,2026-11-20T16:58:00Z,34,5400,4,2200,8,2018,2025
-mememes.com,meme+mes,90.5,GoDaddy,BuyNow,11.0,0,2026-11-18T17:21:00Z,69,720,16,1628,17,2009,2025
-loverlane.com,lover+lane,88.2,GoDaddy,Bid,1.0,0,2026-11-18T18:58:00Z,99,390,27,314,0,,
+mememes.com,meme+mes,90.5,GoDaddy,BuyNow,11.0,0,2026-11-18T17:21:00Z,69,720,16,1628,0,,
+loverlane.com,lover+lane,88.2,GoDaddy,Bid,1.0,0,2026-11-18T18:58:00Z,99,390,27,314,3,1999,2001
 logwalk.com,log+walk,86.9,GoDaddy,Bid,1.0,0,2026-11-18T19:02:00Z,23,6600,1,1900,14,2010,2023
 waterblade.com,water+blade,86.3,GoDaddy,Bid,1.0,0,2026-11-23T19:24:00Z,27,90,27,3373,28,1999,2026
 godere.com,god+ere,85.7,GoDaddy,Bid,50.0,6,2026-11-24T17:53:00Z,180,110,27,1283,24,2002,2025
-maskfit.com,mask+fit,85.4,GoDaddy,Bid,1.0,0,2026-11-25T17:23:00Z,52,260,17,321,0,2010,
-artstations.com,art+stations,85.3,GoDaddy,Bid,1.0,0,2026-11-21T20:12:00Z,27,90,24,1674,0,,
+maskfit.com,mask+fit,85.4,GoDaddy,Bid,1.0,0,2026-11-25T17:23:00Z,52,260,17,321,9,2010,2018
+artstations.com,art+stations,85.3,GoDaddy,Bid,1.0,0,2026-11-21T20:12:00Z,27,90,24,1674,28,1999,2026
 grinchi.com,grin+chi,85.2,GoDaddy,Bid,1.0,0,2026-11-27T17:57:00Z,43,140,16,2126,9,2008,2016
 wallcast.com,wall+cast,84.8,GoDaddy,Bid,1.0,0,2026-11-23T16:07:00Z,26,110,17,2061,23,2004,2026
 fanmat.com,fan+mat,84.8,GoDaddy,BuyNow,40.0,0,2026-11-18T20:06:00Z,117,70,23,2200,22,2004,2025
@@ -17,39 +17,39 @@ indear.com,ind+ear,84.6,GoDaddy,Bid,1.0,1,2026-11-22T19:50:00Z,581,70,22,1810,17
 dropstitch.com,drop+stitch,84.1,GoDaddy,Bid,1.0,0,2026-11-23T17:17:00Z,52,140,14,2031,17,2010,2026
 sweetpaw.com,sweet+paw,83.7,GoDaddy,Bid,1.0,0,2026-11-24T18:42:00Z,122,260,10,1331,12,2007,2018
 crunchymom.com,crunchy+mom,83.6,GoDaddy,Bid,1.0,1,2026-11-26T19:27:00Z,112,50,23,2067,23,2003,2025
-banand.com,ban+and,83.5,GoDaddy,Bid,1.0,0,2026-11-19T20:57:00Z,504,50,22,1940,25,2001,2025
+banand.com,ban+and,83.5,GoDaddy,Bid,1.0,0,2026-11-19T20:57:00Z,504,50,22,1940,error,,
 oresim.com,ore+sim,83.4,GoDaddy,BuyNow,5.0,0,2026-11-18T17:02:00Z,624,170,14,721,18,2007,2024
 ourcast.com,our+cast,83.3,GoDaddy,Bid,1.0,1,2026-11-25T17:12:00Z,490,50,16,7315,17,2010,2026
 friendmas.com,friend+mas,82.7,GoDaddy,Bid,1.0,0,2026-11-23T17:16:00Z,28,590,1,2147,7,2013,2019
 napwell.com,nap+well,82.6,GoDaddy,Bid,1.0,1,2026-11-24T18:58:00Z,49,90,14,2019,14,2013,2026
 teacap.com,tea+cap,82.3,GoDaddy,Bid,30.0,3,2026-11-19T19:14:00Z,165,50,18,1648,0,,
-earcamera.com,ear+camera,82.1,GoDaddy,Bid,1.0,0,2026-11-22T16:52:00Z,47,50,17,2078,0,,
+earcamera.com,ear+camera,82.1,GoDaddy,Bid,1.0,0,2026-11-22T16:52:00Z,47,50,17,2078,15,2011,2025
 bardoor.com,bar+door,81.6,GoDaddy,Bid,1.0,0,2026-11-24T18:19:00Z,24,90,16,2063,16,2010,2025
-stayunique.com,stay+unique,81.2,GoDaddy,Bid,32.0,5,2026-11-25T18:39:00Z,33,50,15,2178,0,2011,
+stayunique.com,stay+unique,81.2,GoDaddy,Bid,32.0,5,2026-11-25T18:39:00Z,33,50,15,2178,9,2011,2019
 gasbee.com,gas+bee,80.7,GoDaddy,Bid,1.0,0,2026-11-27T17:12:00Z,60,20,21,2443,8,2018,2025
 collegecorner.com,college+corner,80.6,GoDaddy,Bid,1.0,0,2026-11-22T16:44:00Z,65,20,23,2204,28,1998,2025
-netforest.com,net+forest,80.6,GoDaddy,Bid,1.0,1,2026-11-25T20:46:00Z,28,20,28,2223,27,1999,2025
+netforest.com,net+forest,80.6,GoDaddy,Bid,1.0,1,2026-11-25T20:46:00Z,28,20,28,2223,0,,
 caninecorner.com,canine+corner,80.5,GoDaddy,Bid,1.0,0,2026-11-19T18:47:00Z,61,40,20,353,5,2009,2013
-ledforum.com,led+forum,80.5,GoDaddy,Bid,1.0,0,2026-11-19T21:03:00Z,39,20,24,2053,11,2016,2026
+ledforum.com,led+forum,80.5,GoDaddy,Bid,1.0,0,2026-11-19T21:03:00Z,39,20,24,2053,0,,
 mobsec.com,mob+sec,80.5,GoDaddy,Bid,50.0,5,2026-11-23T16:38:00Z,89,20,20,2048,21,1997,2017
-surebusiness.com,sure+business,80.4,GoDaddy,Bid,6.0,2,2026-11-18T20:53:00Z,103,20,21,1863,0,,
+surebusiness.com,sure+business,80.4,GoDaddy,Bid,6.0,2,2026-11-18T20:53:00Z,103,20,21,1863,23,2003,2025
 medheart.com,med+heart,80.4,GoDaddy,Bid,11.0,3,2026-11-26T16:04:00Z,129,20,23,1925,26,1999,2024
 hosegirl.com,hose+girl,80.3,GoDaddy,BuyNow,11.0,0,2026-11-18T21:20:00Z,49,20,20,1801,22,2004,2025
-telmud.com,tel+mud,80.3,GoDaddy,BuyNow,50.0,0,2026-11-18T20:52:00Z,23,320,9,1834,6,2019,2024
+telmud.com,tel+mud,80.3,GoDaddy,BuyNow,50.0,0,2026-11-18T20:52:00Z,23,320,9,1834,0,2019,
 upmin.com,up+min,80.1,GoDaddy,Bid,11.0,3,2026-11-25T18:13:00Z,1387,50,13,1998,4,2011,2014
 knowmes.com,know+mes,80.0,GoDaddy,Bid,1.0,0,2026-11-23T21:11:00Z,39,210,5,952,9,2013,2021
-grimcon.com,grim+con,79.6,GoDaddy,Bid,1.0,0,2026-11-26T18:59:00Z,53,70,10,1774,0,,
+grimcon.com,grim+con,79.6,GoDaddy,Bid,1.0,0,2026-11-26T18:59:00Z,53,70,10,1774,23,2003,2025
 wherenot.com,where+not,79.6,GoDaddy,BuyNow,50.0,0,2026-11-18T16:37:00Z,50,110,7,1799,14,2012,2025
 crossest.com,crossest,79.5,GoDaddy,Bid,1.0,0,2026-11-27T17:32:00Z,138,20,8,2086,12,2013,2024
 zenbeat.com,zen+beat,79.4,GoDaddy,Bid,1.0,0,2026-11-25T16:01:00Z,38,20,22,879,6,2001,2006
 trackpas.com,track+pas,79.4,GoDaddy,BuyNow,30.0,0,2026-11-18T17:20:00Z,45,90,8,1806,0,,
 hasill.com,has+ill,79.2,GoDaddy,Bid,1.0,0,2026-11-25T18:15:00Z,41,170,3,1971,12,2014,2025
-toursit.com,tour+sit,78.8,GoDaddy,BuyNow,50.0,0,2026-11-18T17:35:00Z,216,260,2,683,0,2011,
+toursit.com,tour+sit,78.8,GoDaddy,BuyNow,50.0,0,2026-11-18T17:35:00Z,216,260,2,683,15,2011,2025
 gasques.com,gas+ques,78.6,GoDaddy,BuyNow,40.0,0,2026-11-18T16:16:00Z,48,20,17,1440,21,2004,2024
 motorcycleride.com,motorcycle+ride,78.4,GoDaddy,Bid,30.0,6,2026-11-19T16:03:00Z,204,10,27,2220,17,2001,2017
-pastoo.com,pas+too,78.3,GoDaddy,Bid,50.0,6,2026-11-22T18:17:00Z,264,10,24,2146,24,2003,2026
+pastoo.com,pas+too,78.3,GoDaddy,Bid,50.0,6,2026-11-22T18:17:00Z,264,10,24,2146,0,,
 snappart.com,snap+part,78.1,GoDaddy,Bid,1.0,0,2026-11-27T17:40:00Z,35,20,15,2246,1,2024,2024
-tableworld.com,table+world,78.0,GoDaddy,Bid,11.0,3,2026-11-20T21:19:00Z,193,20,15,2029,0,,
+tableworld.com,table+world,78.0,GoDaddy,Bid,11.0,3,2026-11-20T21:19:00Z,193,20,15,2029,13,2013,2025
 pacefire.com,pace+fire,77.9,GoDaddy,Bid,1.0,0,2026-11-27T18:07:00Z,63,20,15,1914,13,2013,2025
 wallbus.com,wall+bus,77.8,GoDaddy,BuyNow,11.0,0,2026-11-18T17:41:00Z,89,20,21,258,0,,
 vanaver.com,van+aver,77.7,GoDaddy,Bid,1.0,0,2026-11-22T19:08:00Z,69,20,15,1597,9,2016,2024
@@ -59,15 +59,15 @@ centmax.com,cent+max,77.1,GoDaddy,Bid,1.0,0,2026-11-26T16:35:00Z,41,20,13,2174,1
 craftlock.com,craft+lock,77.1,GoDaddy,Bid,1.0,0,2026-11-26T18:11:00Z,27,20,13,2175,8,2018,2025
 artaviation.com,art+aviation,76.8,GoDaddy,Bid,1.0,0,2026-11-27T16:29:00Z,129,10,17,2043,14,2012,2025
 marweld.com,mar+weld,76.7,GoDaddy,Bid,1.0,1,2026-11-23T20:39:00Z,21,70,27,2047,17,2010,2026
-bullrest.com,bull+rest,76.6,GoDaddy,Bid,1.0,0,2026-11-27T16:13:00Z,26,20,12,2189,0,,
+bullrest.com,bull+rest,76.6,GoDaddy,Bid,1.0,0,2026-11-27T16:13:00Z,26,20,12,2189,11,2008,2018
 onlyteas.com,only+teas,76.5,GoDaddy,Bid,1.0,0,2026-11-18T17:31:00Z,31,90,2,1899,9,2017,2025
 liftcam.com,lift+cam,76.5,GoDaddy,Bid,1.0,0,2026-11-25T18:39:00Z,38,20,17,307,23,2004,2026
 antilands.com,anti+lands,76.2,GoDaddy,BuyNow,40.0,0,2026-11-18T19:08:00Z,26,30,9,1834,4,2018,2021
-bumbra.com,bum+bra,75.7,GoDaddy,Bid,1.0,0,2026-11-18T20:09:00Z,76,50,5,1561,0,,
+bumbra.com,bum+bra,75.7,GoDaddy,Bid,1.0,0,2026-11-18T20:09:00Z,76,50,5,1561,3,2014,2016
 mintgen.com,mint+gen,75.7,GoDaddy,Bid,1.0,0,2026-11-22T21:11:00Z,39,20,10,2382,24,2002,2025
-pinclothing.com,pin+clothing,75.7,GoDaddy,Bid,1.0,0,2026-11-24T19:19:00Z,43,10,15,1999,0,2004,
+pinclothing.com,pin+clothing,75.7,GoDaddy,Bid,1.0,0,2026-11-24T19:19:00Z,43,10,15,1999,22,2004,2025
 mixpres.com,mix+pres,75.6,GoDaddy,Bid,1.0,0,2026-11-18T20:03:00Z,84,90,1,1388,11,2016,2026
-boardswap.com,board+swap,75.5,GoDaddy,Bid,1.0,1,2026-11-20T20:21:00Z,23,20,18,1955,0,2009,
+boardswap.com,board+swap,75.5,GoDaddy,Bid,1.0,1,2026-11-20T20:21:00Z,23,20,18,1955,17,2009,2025
 denscorp.com,dens+corp,75.4,GoDaddy,Bid,1.0,1,2026-11-18T17:32:00Z,26,20,11,1318,10,2017,2026
 pottag.com,pot+tag,75.4,GoDaddy,Bid,1.0,0,2026-11-21T20:14:00Z,86,20,10,1951,2,2018,2019
 torbest.com,tor+best,75.4,GoDaddy,Bid,1.0,0,2026-11-23T17:34:00Z,206,20,10,1919,10,2016,2025
@@ -93,8 +93,8 @@ torflow.com,tor+flow,74.1,GoDaddy,Bid,1.0,0,2026-11-26T18:47:00Z,465,20,7,2191,4
 pipcorn.com,pip+corn,74.1,GoDaddy,Bid,25.0,5,2026-11-21T21:14:00Z,14,4400,15,1421,15,2012,2026
 mybrim.com,my+brim,74.0,GoDaddy,Bid,1.0,0,2026-11-23T16:49:00Z,30,20,7,2089,21,2003,2023
 lifeboa.com,life+boa,73.8,GoDaddy,Bid,1.0,0,2026-11-18T18:36:00Z,1322,50,1,1644,1,2013,2013
-daybuild.com,day+build,73.8,GoDaddy,Bid,1.0,0,2026-11-27T19:31:00Z,173,10,11,2099,14,2013,2026
-hamagar.com,ham+agar,73.7,GoDaddy,Bid,1.0,0,2026-11-22T20:50:00Z,51,10,11,1974,8,2011,2018
+daybuild.com,day+build,73.8,GoDaddy,Bid,1.0,0,2026-11-27T19:31:00Z,173,10,11,2099,0,,
+hamagar.com,ham+agar,73.7,GoDaddy,Bid,1.0,0,2026-11-22T20:50:00Z,51,10,11,1974,0,2011,
 constang.com,cons+tang,73.7,GoDaddy,Bid,1.0,0,2026-11-24T18:05:00Z,29,50,1,1484,0,,
 narcode.com,narc+ode,73.6,GoDaddy,Bid,1.0,0,2026-11-20T16:58:00Z,81,40,2,1644,18,2008,2025
 reedmaster.com,reed+master,73.5,GoDaddy,Bid,1.0,0,2026-11-19T18:19:00Z,27,20,6,2004,25,2000,2024
@@ -102,8 +102,8 @@ gamescare.com,game+scare,73.4,GoDaddy,Bid,1.0,0,2026-11-20T20:32:00Z,28,20,6,193
 termitem.com,term+item,73.4,GoDaddy,Bid,1.0,0,2026-11-24T20:50:00Z,88,20,8,852,5,2021,2025
 acebran.com,ace+bran,73.3,GoDaddy,BuyNow,50.0,0,2026-11-18T21:18:00Z,630,20,6,1787,5,2021,2025
 biblebit.com,bible+bit,73.2,GoDaddy,Bid,1.0,1,2026-11-19T21:27:00Z,52,10,10,2001,23,2003,2025
-onebuds.com,one+buds,73.2,GoDaddy,BuyNow,40.0,0,2026-11-18T21:09:00Z,20,260,8,1893,1,2021,2021
-grewind.com,grew+ind,73.1,GoDaddy,Bid,1.0,0,2026-11-19T17:35:00Z,57,20,5,2121,5,2021,2025
+onebuds.com,one+buds,73.2,GoDaddy,BuyNow,40.0,0,2026-11-18T21:09:00Z,20,260,8,1893,0,,
+grewind.com,grew+ind,73.1,GoDaddy,Bid,1.0,0,2026-11-19T17:35:00Z,57,20,5,2121,0,2021,
 humire.com,hum+ire,73.1,GoDaddy,Bid,1.0,0,2026-11-22T20:29:00Z,81,40,1,1712,11,2011,2021
 blackcob.com,black+cob,72.9,GoDaddy,Bid,1.0,0,2026-11-25T19:36:00Z,85,40,0,2217,8,2018,2025
 gallite.com,gal+lite,72.8,GoDaddy,Bid,1.0,0,2026-11-26T16:38:00Z,92,40,0,1994,6,2011,2016
@@ -117,7 +117,7 @@ inspat.com,ins+pat,72.4,GoDaddy,Bid,1.0,0,2026-11-18T16:20:00Z,351,20,4,1893,11,
 gettrigger.com,get+trigger,72.4,GoDaddy,Bid,1.0,0,2026-11-19T18:04:00Z,22,30,13,2177,12,2013,2024
 wildire.com,wild+ire,72.4,GoDaddy,Bid,1.0,0,2026-11-20T16:13:00Z,23,90,3,1147,1,2024,2024
 divadivine.com,diva+divine,72.4,GoDaddy,Bid,1.0,0,2026-11-21T18:20:00Z,22,10,27,2312,27,1999,2025
-purefoam.com,pure+foam,72.3,GoDaddy,Bid,1.0,1,2026-11-20T20:52:00Z,22,10,24,2182,0,2003,
+purefoam.com,pure+foam,72.3,GoDaddy,Bid,1.0,1,2026-11-20T20:52:00Z,22,10,24,2182,23,2003,2025
 rowchat.com,row+chat,71.9,GoDaddy,BuyNow,11.0,0,2026-11-18T16:39:00Z,56,20,3,1880,13,2013,2025
 piegolf.com,pie+golf,71.9,GoDaddy,BuyNow,50.0,0,2026-11-18T16:48:00Z,24,40,2,2127,2,2024,2025
 tabrook.com,tab+rook,71.8,GoDaddy,Bid,1.0,0,2026-11-19T19:02:00Z,421,40,1,651,2,2003,2004
@@ -129,7 +129,7 @@ teamcog.com,team+cog,71.5,GoDaddy,Bid,1.0,0,2026-11-24T19:42:00Z,41,20,2,2069,22
 minoven.com,min+oven,71.3,GoDaddy,BuyNow,50.0,0,2026-11-18T16:17:00Z,36,20,2,1737,0,,
 theabbeys.com,the+abbeys,71.2,GoDaddy,Bid,1.0,0,2026-11-21T19:03:00Z,33,0,26,5312,24,2002,2025
 negrot.com,neg+rot,71.1,GoDaddy,Bid,1.0,0,2026-11-18T18:56:00Z,354,20,1,2218,1,2018,2018
-panthershop.com,panther+shop,71.1,GoDaddy,Bid,1.0,0,2026-11-19T17:44:00Z,17,140,27,2000,15,2011,2025
+panthershop.com,panther+shop,71.1,GoDaddy,Bid,1.0,0,2026-11-19T17:44:00Z,17,140,27,2000,0,,
 submate.com,sub+mate,71.1,GoDaddy,Bid,1.0,0,2026-11-21T16:28:00Z,26,20,2,1549,21,2006,2026
 sheflip.com,she+flip,71.1,GoDaddy,Bid,1.0,0,2026-11-23T16:25:00Z,26,20,1,2244,4,2022,2025
 rowdale.com,row+dale,71.0,GoDaddy,Bid,1.0,0,2026-11-20T19:44:00Z,137,20,1,1983,2,2004,2005
@@ -140,27 +140,27 @@ procleanser.com,pro+cleanser,70.9,GoDaddy,Bid,1.0,0,2026-11-21T19:55:00Z,91,20,1
 oldgeneral.com,old+general,70.9,GoDaddy,Bid,1.0,0,2026-11-22T20:08:00Z,27,0,19,6345,14,2011,2024
 taretar.com,tare+tar,70.9,GoDaddy,Bid,1.0,0,2026-11-26T19:13:00Z,53,30,0,959,1,2024,2024
 reforwarding.com,ref+or+warding,70.8,GoDaddy,Bid,1.0,0,2026-11-22T18:23:00Z,22,110,1,2064,0,,
-ringsin.com,ring+sin,70.8,GoDaddy,BuyNow,11.0,0,2026-11-18T21:17:00Z,1323,20,1,1805,14,2012,2025
+ringsin.com,ring+sin,70.8,GoDaddy,BuyNow,11.0,0,2026-11-18T21:17:00Z,1323,20,1,1805,0,,
 laplag.com,lap+lag,70.8,GoDaddy,BuyNow,40.0,0,2026-11-18T19:01:00Z,1230,20,1,1767,0,,
-shamire.com,sham+ire,70.8,GoDaddy,BuyNow,50.0,0,2026-11-18T17:46:00Z,33,20,2,1170,19,2007,2025
+shamire.com,sham+ire,70.8,GoDaddy,BuyNow,50.0,0,2026-11-18T17:46:00Z,33,20,2,1170,0,2007,
 babyprod.com,baby+prod,70.7,GoDaddy,Bid,1.0,0,2026-11-24T18:10:00Z,796,20,1,1575,2,2009,2010
 passported.com,pas+sported,70.6,GoDaddy,Bid,1.0,0,2026-11-26T16:49:00Z,20,50,14,2039,18,2004,2021
 barmass.com,bar+mass,70.4,GoDaddy,Bid,1.0,0,2026-11-21T19:35:00Z,42,10,5,1507,15,2011,2025
 backova.com,back+ova,70.3,GoDaddy,BuyNow,40.0,0,2026-11-18T16:31:00Z,38,20,1,1148,0,,
 prestigewheel.com,prestige+wheel,70.1,GoDaddy,Bid,1.0,0,2026-11-23T18:16:00Z,26,0,27,2331,28,1999,2026
 academyhomes.com,academy+homes,70.1,GoDaddy,Bid,1.0,0,2026-11-27T17:27:00Z,48,0,22,2392,24,2002,2025
-prairiepride.com,prairie+pride,70.0,GoDaddy,Bid,1.0,0,2026-11-19T16:24:00Z,27,0,27,2088,0,,
+prairiepride.com,prairie+pride,70.0,GoDaddy,Bid,1.0,0,2026-11-19T16:24:00Z,27,0,27,2088,26,2001,2026
 unitycentral.com,unity+central,70.0,GoDaddy,Bid,1.0,0,2026-11-20T19:08:00Z,66,0,22,2080,26,2000,2025
 ballsolution.com,ball+solution,70.0,GoDaddy,Bid,1.0,0,2026-11-21T19:41:00Z,116,0,20,2103,15,2011,2025
-inkclip.com,ink+clip,70.0,GoDaddy,Bid,1.0,0,2026-11-24T17:16:00Z,55,0,20,2192,15,2011,2025
+inkclip.com,ink+clip,70.0,GoDaddy,Bid,1.0,0,2026-11-24T17:16:00Z,55,0,20,2192,0,,
 generalsurvey.com,general+survey,70.0,GoDaddy,Bid,1.0,1,2026-11-25T17:41:00Z,26,0,27,2100,24,2002,2025
 surgemark.com,surge+mark,70.0,GoDaddy,Bid,1.0,0,2026-11-26T19:13:00Z,94,0,21,2117,19,2005,2023
 littlemaria.com,little+maria,70.0,GoDaddy,Bid,1.0,0,2026-11-27T17:53:00Z,16,210,21,1319,25,2001,2025
 freshmedic.com,fresh+medic,70.0,GoDaddy,Bid,1.0,0,2026-11-27T18:45:00Z,44,0,20,2181,18,2008,2025
 atelierline.com,atelier+line,70.0,GoDaddy,Bid,1.0,0,2026-11-27T19:42:00Z,26,0,23,2103,22,2004,2025
 sacredwill.com,sacred+will,70.0,GoDaddy,BuyNow,11.0,0,2026-11-18T17:19:00Z,25,0,26,2088,22,2004,2025
-bedsales.com,bed+sales,70.0,GoDaddy,Bid,15.0,3,2026-11-26T19:53:00Z,39,0,22,2155,0,2002,
-downlog.com,down+log,69.9,GoDaddy,Bid,1.0,0,2026-11-19T16:32:00Z,59,0,23,1949,0,,
+bedsales.com,bed+sales,70.0,GoDaddy,Bid,15.0,3,2026-11-26T19:53:00Z,39,0,22,2155,0,,
+downlog.com,down+log,69.9,GoDaddy,Bid,1.0,0,2026-11-19T16:32:00Z,59,0,23,1949,19,2007,2025
 askarea.com,ask+area,69.9,GoDaddy,Bid,1.0,1,2026-11-19T20:36:00Z,369,0,20,2020,16,2010,2025
 fiatparts.com,fiat+parts,69.9,GoDaddy,Bid,1.0,1,2026-11-19T21:18:00Z,66,0,29,2053,28,1998,2025
 motorcycletour.com,motorcycle+tour,69.9,GoDaddy,Bid,1.0,1,2026-11-20T16:44:00Z,525,0,27,2019,19,2002,2020
@@ -168,18 +168,18 @@ personalcares.com,personal+cares,69.9,GoDaddy,Bid,1.0,1,2026-11-20T19:07:00Z,132
 lowrock.com,low+rock,69.9,GoDaddy,Bid,1.0,0,2026-11-23T20:26:00Z,354,0,23,1999,24,2003,2026
 artsfind.com,arts+find,69.9,GoDaddy,Bid,1.0,0,2026-11-24T16:01:00Z,363,0,20,2032,23,2004,2026
 statrev.com,stat+rev,69.9,GoDaddy,Bid,1.0,0,2026-11-24T18:03:00Z,37,0,23,2044,18,2004,2021
-callmortgage.com,call+mortgage,69.9,GoDaddy,Bid,1.0,0,2026-11-27T18:23:00Z,31,0,23,2068,0,2001,
+callmortgage.com,call+mortgage,69.9,GoDaddy,Bid,1.0,0,2026-11-27T18:23:00Z,31,0,23,2068,0,,
 jetvacation.com,jet+vacation,69.9,GoDaddy,Bid,1.0,0,2026-11-27T19:27:00Z,49,0,23,2059,22,2004,2025
 landsurplus.com,land+surplus,69.9,GoDaddy,Bid,6.0,3,2026-11-25T17:03:00Z,26,0,22,2067,23,2003,2025
-refolder.com,ref+older,69.9,GoDaddy,Bid,20.0,3,2026-11-19T17:13:00Z,79,0,24,1996,23,2003,2025
-handleyou.com,handle+you,69.9,GoDaddy,BuyNow,50.0,0,2026-11-18T19:47:00Z,94,0,20,1939,13,2013,2025
+refolder.com,ref+older,69.9,GoDaddy,Bid,20.0,3,2026-11-19T17:13:00Z,79,0,24,1996,0,2003,
+handleyou.com,handle+you,69.9,GoDaddy,BuyNow,50.0,0,2026-11-18T19:47:00Z,94,0,20,1939,0,,
 fiatdealer.com,fiat+dealer,69.8,GoDaddy,Bid,1.0,1,2026-11-18T16:35:00Z,47,0,23,1808,25,2001,2025
 wickedbar.com,wicked+bar,69.8,GoDaddy,Bid,1.0,0,2026-11-18T16:38:00Z,37,0,22,1851,7,2013,2019
 instantpromo.com,instant+promo,69.8,GoDaddy,Bid,1.0,1,2026-11-19T16:27:00Z,42,0,27,1900,25,2000,2024
 godchasers.com,god+chasers,69.8,GoDaddy,Bid,1.0,1,2026-11-23T19:39:00Z,16,320,28,386,10,1999,2008
 businesstactics.com,business+tactics,69.8,GoDaddy,Bid,1.0,1,2026-11-26T16:05:00Z,25,0,23,1877,21,2005,2025
 thermalrun.com,thermal+run,69.8,GoDaddy,BuyNow,5.0,0,2026-11-18T20:38:00Z,28,0,20,1873,9,2011,2019
-angelrob.com,angel+rob,69.8,GoDaddy,BuyNow,30.0,0,2026-11-18T19:16:00Z,41,0,22,1863,0,2004,
+angelrob.com,angel+rob,69.8,GoDaddy,BuyNow,30.0,0,2026-11-18T19:16:00Z,41,0,22,1863,23,2004,2026
 handproperties.com,hand+properties,69.7,GoDaddy,Bid,1.0,0,2026-11-18T18:10:00Z,38,0,28,1676,25,2000,2024
 secondrat.com,second+rat,69.7,GoDaddy,Bid,1.0,0,2026-11-18T20:48:00Z,42,0,23,1694,23,2004,2026
 industrialled.com,industrial+led,69.7,GoDaddy,Bid,1.0,1,2026-11-19T20:04:00Z,25,0,24,1742,11,2016,2026
@@ -193,9 +193,9 @@ aboutcook.com,about+cook,69.6,GoDaddy,Bid,1.0,0,2026-11-20T19:49:00Z,89,0,21,156
 storypodcast.com,story+podcast,69.6,GoDaddy,Bid,1.0,0,2026-11-23T16:45:00Z,439,0,21,1643,2,2013,2014
 rigsolutions.com,rig+solutions,69.6,GoDaddy,Bid,1.0,0,2026-11-24T16:42:00Z,47,0,22,1579,22,2004,2025
 timingtool.com,timing+tool,69.6,GoDaddy,Bid,1.0,0,2026-11-27T16:41:00Z,29,0,27,1539,26,2001,2026
-beautyhill.com,beauty+hill,69.6,GoDaddy,Bid,6.0,2,2026-11-27T21:08:00Z,47,0,19,2392,0,2003,
+beautyhill.com,beauty+hill,69.6,GoDaddy,Bid,6.0,2,2026-11-27T21:08:00Z,47,0,19,2392,23,2003,2025
 literacyworks.com,literacy+works,69.5,GoDaddy,Bid,1.0,1,2026-11-21T18:38:00Z,36,0,27,1504,2,2007,2008
-siteforfree.com,site+for+free,69.5,GoDaddy,Bid,1.0,0,2026-11-23T18:07:00Z,42,0,27,1427,0,2009,
+siteforfree.com,site+for+free,69.5,GoDaddy,Bid,1.0,0,2026-11-23T18:07:00Z,42,0,27,1427,16,2009,2024
 weedab.com,wee+dab,69.5,GoDaddy,Bid,1.0,0,2026-11-26T18:53:00Z,92,0,20,1462,15,2011,2025
 piemas.com,pie+mas,69.5,GoDaddy,BuyNow,40.0,0,2026-11-18T16:37:00Z,100,0,21,1447,19,2007,2025
 kitchendiaries.com,kitchen+diaries,69.5,GoDaddy,Bid,43.0,5,2026-11-24T17:47:00Z,35,0,19,2131,15,2010,2024
@@ -205,12 +205,12 @@ trytelescope.com,try+telescope,69.4,GoDaddy,Bid,1.0,0,2026-11-20T17:26:00Z,25,10
 goingtoheaven.com,going+to+heaven,69.4,GoDaddy,Bid,1.0,0,2026-11-21T20:03:00Z,57,0,21,1407,24,2001,2024
 ranchlist.com,ranch+list,69.4,GoDaddy,Bid,1.0,0,2026-11-21T20:56:00Z,47,0,26,1387,3,2022,2024
 hillhound.com,hill+hound,69.4,GoDaddy,Bid,1.0,0,2026-11-23T17:54:00Z,30,0,19,1974,15,2011,2025
-hotelscar.com,hotel+scar,69.4,GoDaddy,Bid,6.0,2,2026-11-18T21:19:00Z,95,0,22,1309,4,2014,2017
-pineguy.com,pine+guy,69.4,GoDaddy,BuyNow,40.0,0,2026-11-18T19:18:00Z,34,0,26,1409,13,2013,2025
-rightcorp.com,right+corp,69.3,GoDaddy,Bid,1.0,0,2026-11-25T19:37:00Z,121,0,22,1212,23,2003,2025
-themilliner.com,the+milliner,69.3,GoDaddy,Bid,1.0,0,2026-11-25T19:42:00Z,26,0,20,1304,24,2002,2025
-organiclive.com,organic+live,69.3,GoDaddy,Bid,6.0,2,2026-11-24T20:44:00Z,36,0,21,1257,23,2003,2025
-squidstudios.com,squid+studios,69.2,GoDaddy,Bid,1.0,0,2026-11-23T18:23:00Z,43,0,25,1187,25,2001,2025
+hotelscar.com,hotel+scar,69.4,GoDaddy,Bid,6.0,2,2026-11-18T21:19:00Z,95,0,22,1309,,,
+pineguy.com,pine+guy,69.4,GoDaddy,BuyNow,40.0,0,2026-11-18T19:18:00Z,34,0,26,1409,,,
+rightcorp.com,right+corp,69.3,GoDaddy,Bid,1.0,0,2026-11-25T19:37:00Z,121,0,22,1212,,,
+themilliner.com,the+milliner,69.3,GoDaddy,Bid,1.0,0,2026-11-25T19:42:00Z,26,0,20,1304,,,
+organiclive.com,organic+live,69.3,GoDaddy,Bid,6.0,2,2026-11-24T20:44:00Z,36,0,21,1257,,,
+squidstudios.com,squid+studios,69.2,GoDaddy,Bid,1.0,0,2026-11-23T18:23:00Z,43,0,25,1187,,,
 kitrich.com,kit+rich,69.1,GoDaddy,Bid,1.0,0,2026-11-19T18:10:00Z,18,40,21,2497,,,
 jobgrant.com,job+grant,69.1,GoDaddy,Bid,1.0,0,2026-11-20T20:56:00Z,26,0,19,1605,,,
 originalkit.com,original+kit,69.1,GoDaddy,Bid,1.0,0,2026-11-23T20:44:00Z,44,0,19,1639,,,
@@ -226,74 +226,69 @@ thrivezone.com,thrive+zone,37.4,Dynadot,,12.99,6,2026/11/24 12:00 PST,14,0,16,2,
 simmark.com,sim+mark,33.5,Dynadot,,45.03,1,2026/11/19 05:59 PST,12,0,19,0,29,1996,2024
 truthfirst.com,truth+first,32.0,Dynadot,,1.0,1,2026/12/13 08:00 PST,16,0,0,0,16,2004,2019
 houseofhiring.com,house+of+hiring,30.3,Dynadot,,11.0,0,2026/11/22 14:30 PST,13,0,4,5,2,2024,2025
-strengthonline.com,strength+online,28.9,Dynadot,,7.99,0,2026/11/22 16:00 PST,9,0,22,1,0,,
+strengthonline.com,strength+online,28.9,Dynadot,,7.99,1,2026/11/22 16:00 PST,9,0,22,1,26,2001,2026
+videovets.com,video+vets,27.4,Dynadot,,7.99,0,2026/11/25 09:57 PST,8,0,26,2,21,2004,2024
 bigcola.com,big+cola,26.2,Dynadot,,1.0,0,2026/12/11 08:00 PST,11,0,0,25,24,2003,2026
 bigpron.com,big+pron,24.5,Dynadot,,7.99,0,2026/11/24 11:22 PST,12,0,1,0,8,2010,2017
-cubsgame.com,cubs+game,24.5,Dynadot,,7.99,0,2026/11/20 16:00 PST,12,0,1,0,0,2002,
+cubsgame.com,cubs+game,24.5,Dynadot,,7.99,0,2026/11/20 16:00 PST,12,0,1,0,23,2002,2024
 ascendcoach.com,ascend+coach,24.0,Dynadot,,1.0,0,2026/12/17 08:00 PST,12,0,0,0,7,2013,2019
 airtea.com,air+tea,24.0,Dynadot,,27.0,17,2026/11/30 08:00 PST,12,0,0,0,23,2004,2026
 eventaudit.com,event+audit,24.0,Dynadot,,49.0,0,2026/11/21 14:30 PST,7,0,23,0,18,2004,2021
 rapidbulletin.com,rapid+bulletin,23.9,Dynadot,,7.99,0,2026/11/21 12:00 PST,10,0,6,1,14,2012,2025
 cloudathlete.com,cloud+athlete,23.5,Dynadot,,7.99,0,2026/11/22 16:00 PST,11,0,3,0,0,,
-goldspider.com,gold+spider,23.2,Dynadot,,7.99,0,2026/11/24 11:18 PST,5,0,18,24,0,,
+goldspider.com,gold+spider,23.2,Dynadot,,7.99,0,2026/11/24 11:18 PST,5,0,18,24,28,1998,2025
 aftercurve.com,after+curve,23.1,Dynadot,,1.0,0,2026/11/21 08:00 PST,4,0,0,110219,error,,
-zenmanga.com,zen+manga,22.8,Dynadot,,1.0,0,2026/11/23 16:00 PST,7,0,0,873,0,2008,
+zenmanga.com,zen+manga,22.8,Dynadot,,1.0,0,2026/11/23 16:00 PST,7,0,0,873,18,2008,2025
 equinoxevent.com,equinox+event,22.8,Dynadot,,7.99,0,2026/11/19 11:16 PST,6,0,1,2764,7,2010,2016
 etcmining.com,etc+mining,22.7,Dynadot,,7.99,1,2026/11/19 10:44 PST,6,0,7,245,3,2017,2019
 airdropfree.com,airdrop+free,22.5,Dynadot,,7.99,0,2026/11/24 10:36 PST,11,0,1,0,8,2018,2025
 environmentmove.com,environment+move,22.0,Dynadot,,1.0,0,2026/11/25 08:00 PST,2,0,0,987290,14,2013,2026
-auraserve.com,aura+serve,22.0,Dynadot,,2.0,2,2026/11/23 08:00 PST,11,0,0,0,25,2000,2024
+auraserve.com,aura+serve,22.0,Dynadot,,2.0,2,2026/11/23 08:00 PST,11,0,0,0,0,,
 footballfuel.com,football+fuel,21.5,Dynadot,,7.99,0,2026/11/22 16:00 PST,6,0,19,0,15,2011,2025
 expofiles.com,expo+files,21.5,Dynadot,,43.43,0,2026/11/21 05:44 PST,4,0,14,145,21,1999,2019
-morebirthdays.com,more+birthdays,21.4,Dynadot,,1.0,1,2026/11/19 08:00 PST,7,0,0,296,18,2007,2024
+morebirthdays.com,more+birthdays,21.4,Dynadot,,1.0,1,2026/11/19 08:00 PST,7,0,0,296,0,2007,
 sayflower.com,say+flower,21.0,Dynadot,,1.0,0,2026/11/27 16:00 PST,8,0,0,44,19,2000,2018
-mealhack.com,meal+hack,20.7,Dynadot,,2.0,2,2026/12/05 08:00 PST,8,0,0,36,0,,
+mealhack.com,meal+hack,20.7,Dynadot,,2.0,2,2026/12/05 08:00 PST,8,0,0,36,16,2011,2026
 topshort.com,top+short,20.7,Dynadot,,43.43,0,2026/11/21 05:44 PST,5,0,15,11,4,2008,2011
 inspiregroups.com,inspire+groups,20.5,Dynadot,,7.99,0,2026/11/22 09:02 PST,6,0,17,0,14,2011,2024
 linenfield.com,linen+field,20.5,Dynadot,,7.99,0,2026/11/23 12:28 PST,10,0,1,0,1,2022,2022
 cosyflames.com,cosy+flames,20.5,Dynadot,,29.0,0,2026/11/22 14:30 PST,7,0,13,0,4,2018,2021
 joyreach.com,joy+reach,20.4,Dynadot,,43.43,0,2026/11/20 05:44 PST,5,0,15,8,11,2012,2022
-codonlabs.com,cod+on+labs,20.0,Dynadot,,1.0,0,2026/11/26 16:00 PST,10,0,0,0,8,2018,2025
-grantbox.com,grant+box,20.0,Dynadot,,6.0,6,2026/12/06 08:00 PST,10,0,0,0,9,2010,2018
-greyplanet.com,grey+planet,20.0,Dynadot,,7.99,0,2026/11/24 10:49 PST,5,0,20,0,0,2011,
+codonlabs.com,cod+on+labs,20.0,Dynadot,,1.0,0,2026/11/26 16:00 PST,10,0,0,0,0,2018,
+grantbox.com,grant+box,20.0,Dynadot,,6.0,6,2026/12/06 08:00 PST,10,0,0,0,0,2010,
+greyplanet.com,grey+planet,20.0,Dynadot,,7.99,0,2026/11/24 10:49 PST,5,0,20,0,1,2011,2011
+ladieshop.com,ladies+hop,20.0,Dynadot,,7.99,0,2026/11/25 11:18 PST,5,0,27,0,23,2003,2025
 mattroyal.com,matt+royal,20.0,Dynadot,,7.99,0,2026/11/23 16:00 PST,5,0,21,0,14,2012,2025
-beyondtheriver.com,beyond+the+river,20.0,Dynadot,,13.11,6,2026/11/18 10:25 PST,5,0,23,0,23,2003,2025
 longestdrive.com,longest+drive,19.9,Dynadot,,1.0,0,2026/12/01 08:00 PST,8,0,0,19,23,1999,2021
+mobileorchard.com,mobile+orchard,19.8,Dynadot,,7.99,1,2026/11/20 10:37 PST,2,0,8,8313,19,2008,2026
 chaseexecutive.com,chase+executive,19.8,Dynadot,,7.99,0,2026/11/21 11:49 PST,5,0,16,3,19,2008,2026
-mobileorchard.com,mobile+orchard,19.8,Dynadot,,7.99,0,2026/11/20 10:37 PST,2,0,8,8313,19,2008,2026
 youngdance.com,young+dance,19.4,Dynadot,,7.99,1,2026/11/19 16:00 PST,5,0,17,1,24,2002,2025
 liplast.com,lip+last,19.2,Dynadot,,1.0,0,2026/12/05 08:00 PST,7,0,0,55,21,1997,2017
 careersplay.com,career+splay,19.2,Dynadot,,7.99,0,2026/11/24 09:53 PST,2,0,13,818,14,2013,2026
 animalsdata.com,animals+data,18.9,Dynadot,,1.0,0,2026/11/26 08:00 PST,2,0,0,96058,14,2013,2026
 gaminghaven.com,gaming+haven,18.9,Dynadot,,5.0,5,2026/12/07 08:00 PST,7,0,0,42,28,1999,2026
-gadgetsmall.com,gadget+small,18.9,Dynadot,,7.99,1,2026/11/18 10:03 PST,5,0,16,1,22,2004,2025
 pressfrom.com,press+from,18.9,Dynadot,,7.99,1,2026/11/19 16:00 PST,3,0,10,443,11,2016,2026
 bookchase.com,book+chase,18.3,Dynadot,,14.0,8,2026/11/19 10:24 PST,3,0,27,5,22,1998,2019
 foodtreasure.com,food+treasure,18.0,Dynadot,,1.0,1,2026/11/21 08:00 PST,9,0,0,0,24,2003,2026
-realitymap.com,reality+map,18.0,Dynadot,,1.0,0,2026/11/28 08:00 PST,9,0,0,0,0,,
-railclips.com,rail+clips,18.0,Dynadot,,7.99,0,2026/11/21 09:04 PST,4,0,23,0,19,2004,2022
-hatzinger.com,hat+zinger,18.0,Dynadot,,26.0,9,2026/11/18 12:57 PST,4,0,25,0,6,2017,2022
-dustanalysis.com,dust+analysis,18.0,Dynadot,,43.43,0,2026/11/19 05:44 PST,7,0,8,0,0,2021,
-lordanime.com,lord+anime,17.9,Dynadot,,7.99,0,2026/11/21 10:28 PST,8,0,1,2,0,2006,
-rapidpaid.com,rapid+paid,17.9,Dynadot,,7.99,0,2026/11/23 10:25 PST,2,0,8,2003,0,,
-switchlive.com,switch+live,17.5,Dynadot,,25.0,1,2026/11/18 14:30 PST,6,0,11,0,0,,
+realitymap.com,reality+map,18.0,Dynadot,,1.0,0,2026/11/28 08:00 PST,9,0,0,0,0,2003,
+railclips.com,rail+clips,18.0,Dynadot,,7.99,0,2026/11/21 09:04 PST,4,0,23,0,0,,
+dustanalysis.com,dust+analysis,18.0,Dynadot,,43.43,0,2026/11/19 05:44 PST,7,0,8,0,1,2021,2021
+lordanime.com,lord+anime,17.9,Dynadot,,7.99,0,2026/11/21 10:28 PST,8,0,1,2,20,2006,2025
+rapidpaid.com,rapid+paid,17.9,Dynadot,,7.99,0,2026/11/23 10:25 PST,2,0,8,2003,10,2013,2022
 pineecho.com,pine+echo,17.5,Dynadot,,43.43,0,2026/11/21 05:29 PST,8,0,3,0,7,2003,2009
-griefandlove.com,grief+and+love,17.4,Dynadot,,1.0,0,2026/12/16 08:00 PST,8,0,0,2,4,2021,2024
+griefandlove.com,grief+and+love,17.4,Dynadot,,1.0,0,2026/12/16 08:00 PST,8,0,0,2,0,,
+plugnpaid.com,plug+n+paid,16.9,Dynadot,,7.99,1,2026/11/20 10:03 PST,2,0,10,433,5,2017,2021
 domainwars.com,domain+wars,16.9,Dynadot,,7.99,0,2026/11/24 16:00 PST,6,0,8,1,27,1999,2025
-plugnpaid.com,plug+n+paid,16.9,Dynadot,,7.99,0,2026/11/20 10:03 PST,2,0,10,433,5,2017,2021
 agentvex.com,agent+vex,16.8,Dynadot,,7.99,0,2026/11/20 12:35 PST,4,0,1,567,0,,
 winningcreed.com,winning+creed,16.8,Dynadot,,7.99,0,2026/11/21 11:35 PST,2,0,9,577,8,2018,2025
-diamondwebsites.com,diamond+websites,16.7,Dynadot,,1.0,0,2026/11/24 16:00 PST,5,0,0,164,0,2000,
-galenaschools.com,galena+schools,16.6,Dynadot,,5.0,1,2026/11/18 09:59 PST,5,0,1,109,0,,
+diamondwebsites.com,diamond+websites,16.7,Dynadot,,1.0,0,2026/11/24 16:00 PST,5,0,0,164,26,2000,2025
 bridgemesh.com,bridge+mesh,16.5,Dynadot,,7.99,0,2026/11/23 11:05 PST,8,0,1,0,1,2024,2024
 engineerprompt.com,engineer+prompt,16.5,Dynadot,,7.99,0,2026/11/19 12:00 PST,6,0,4,6,3,2024,2026
-reindeerone.com,reindeer+one,16.5,Dynadot,,7.99,0,2026/11/20 09:18 PST,8,0,1,0,0,2016,
+reindeerone.com,reindeer+one,16.5,Dynadot,,7.99,0,2026/11/20 09:18 PST,8,0,1,0,3,2016,2018
 rebornbot.com,reborn+bot,16.5,Dynadot,,43.43,0,2026/11/20 05:59 PST,8,0,1,0,0,,
 pitaha.com,pit+aha,16.4,Dynadot,,33.0,0,2026/11/23 14:30 PST,2,0,15,41,13,2013,2025
-botprompts.com,bot+prompts,16.3,Dynadot,,7.99,1,2026/11/18 12:00 PST,6,0,4,5,3,2024,2026
 inspectionwise.com,inspection+wise,16.3,Dynadot,,7.99,1,2026/11/22 12:00 PST,2,0,25,5,17,2003,2019
-letviews.com,let+views,16.3,Dynadot,,7.99,0,2026/11/19 12:59 PST,2,0,1,8497,0,,
-loudlinks.com,loud+links,16.3,Dynadot,,7.99,0,2026/11/18 11:44 PST,3,0,17,3,23,2003,2025
+letviews.com,let+views,16.3,Dynadot,,7.99,0,2026/11/19 12:59 PST,2,0,1,8497,4,2022,2025
 womanpilot.com,woman+pilot,16.2,Dynadot,,1.0,0,2026/12/12 08:00 PST,5,0,0,118,29,1998,2026
 boxhostel.com,box+hostel,16.1,Dynadot,,1.0,0,2026/12/03 08:00 PST,3,0,0,2319,19,2007,2025
 conedrone.com,cone+drone,16.0,Dynadot,,1.0,1,2026/12/05 08:00 PST,8,0,0,0,11,2011,2021
@@ -301,7 +296,7 @@ checkoutworks.com,checkout+works,16.0,Dynadot,,1.0,0,2026/12/05 08:00 PST,8,0,0,
 savingshop.com,saving+shop,16.0,Dynadot,,1.0,0,2026/11/29 08:00 PST,8,0,0,0,26,2001,2026
 marketingprompt.com,marketing+prompt,16.0,Dynadot,,7.99,1,2026/11/19 12:55 PST,7,0,4,0,13,2013,2025
 postcarts.com,post+carts,16.0,Dynadot,,7.99,1,2026/11/24 12:00 PST,3,0,23,0,22,2004,2025
-bubblemilk.com,bubble+milk,16.0,Dynadot,,7.99,0,2026/11/27 12:00 PST,3,0,24,0,0,,
+bubblemilk.com,bubble+milk,16.0,Dynadot,,7.99,0,2026/11/27 12:00 PST,3,0,24,0,22,2004,2025
 dondis.com,don+dis,16.0,Dynadot,,45.2,0,2026/11/24 11:00 PST,3,0,22,0,21,2004,2024
 ovengloves.com,oven+gloves,16.0,Dynadot,,45.38,0,2026/11/21 11:00 PST,3,0,22,0,24,2002,2025
 coonvalley.com,coon+valley,16.0,Dynadot,,46.03,0,2026/11/19 11:00 PST,3,0,24,0,20,1999,2018
@@ -311,57 +306,62 @@ windelivery.com,win+delivery,15.5,Dynadot,,7.99,0,2026/11/21 11:09 PST,5,0,11,0,
 dayouting.com,day+outing,15.5,Dynadot,,43.43,0,2026/11/21 05:44 PST,3,0,19,0,15,2011,2025
 rayfond.com,ray+fond,15.5,Dynadot,,46.63,2,2026/11/19 05:59 PST,4,0,15,0,5,2021,2025
 royaltutor.com,royal+tutor,15.4,Dynadot,,1.0,0,2026/12/17 08:00 PST,7,0,0,2,12,2011,2022
-chordzone.com,chord+zone,15.4,Dynadot,,7.99,1,2026/11/18 12:16 PST,4,0,13,1,3,2014,2016
 beyondthestreet.com,beyond+the+street,15.4,Dynadot,,7.99,0,2026/11/24 12:12 PST,3,0,17,1,16,2011,2026
-moonsports.com,moon+sports,15.4,Dynadot,,19.0,19,2026/11/30 08:00 PST,7,0,0,2,0,1996,
+moonsports.com,moon+sports,15.4,Dynadot,,19.0,19,2026/11/30 08:00 PST,7,0,0,2,31,1996,2026
 collectthemall.com,collect+the+mall,15.3,Dynadot,,1.0,0,2026/12/11 08:00 PST,6,0,0,12,19,2003,2021
 fingernailfilms.com,fingernail+films,15.2,Dynadot,,7.99,0,2026/11/24 13:10 PST,2,0,1,3551,10,2016,2025
 blackprompt.com,black+prompt,15.1,Dynadot,,7.99,0,2026/11/19 12:00 PST,5,0,4,10,6,2021,2026
-indexmovie.com,index+movie,15.0,Dynadot,,1.0,1,2026/11/21 08:00 PST,6,0,0,9,19,2008,2026
+updiary.com,up+diary,15.1,Dynadot,,7.99,0,2026/11/25 10:31 PST,2,0,9,158,0,2005,
+indexmovie.com,index+movie,15.0,Dynadot,,1.0,1,2026/11/21 08:00 PST,6,0,0,9,0,2008,
 agentbran.com,agent+bran,15.0,Dynadot,,7.99,0,2026/11/20 12:35 PST,2,0,1,3090,0,,
+dupeless.com,dupe+less,15.0,Dynadot,,7.99,0,2026/11/21 12:52 PST,5,0,5,6,0,2007,
+reasoncoin.com,reason+coin,15.0,Dynadot,,7.99,0,2026/11/25 12:00 PST,5,0,10,0,8,2018,2025
+singmore.com,sing+more,15.0,Dynadot,,9.99,3,2026/11/19 12:20 PST,5,0,10,0,15,2010,2024
+madeforsocial.com,made+for+social,15.0,Dynadot,,23.0,0,2026/11/23 14:30 PST,5,0,10,0,16,2010,2025
+chainflipper.com,chain+flipper,14.9,Dynadot,,7.99,0,2026/11/21 13:29 PST,2,0,1,2828,1,2025,2025
 goldenpool.com,golden+pool,88.7,DropCatch,Dropped (price on site),,,2026-11-20,34,0,0,0,18,2002,2019
 freetactic.com,free+tactic,88.1,DropCatch,PrivateSeller (price on site),,,2026-11-23,28,0,0,0,9,2018,2026
-freemetals.com,free+metals,77.2,DropCatch,PrivateSeller (price on site),,,2026-11-18,19,0,0,0,1,2011,2011
-cloudsservice.com,clouds+service,75.4,DropCatch,PrivateSeller (price on site),,,2026-11-18,18,0,0,0,0,,
-gasbars.com,gas+bars,62.2,DropCatch,PrivateSeller (price on site),,,2026-11-18,11,0,0,0,16,2000,2015
 duckmeme.com,duck+meme,57.2,DropCatch,PreRelease (price on site),,,2026-11-20,12,0,0,0,12,2013,2024
-finemanager.com,fine+manager,56.7,DropCatch,PrivateSeller (price on site),,,2026-11-18,7,0,0,0,16,2007,2022
 faceturkey.com,face+turkey,56.0,DropCatch,PreRelease (price on site),,,2026-11-20,7,0,0,0,12,2008,2019
-dogsstyle.com,dogs+style,55.7,DropCatch,PrivateSeller (price on site),,,2026-11-18,7,0,0,0,4,2006,2009
-deeppoet.com,deep+poet,54.9,DropCatch,PrivateSeller (price on site),,,2026-11-18,8,0,0,0,18,2007,2024
 akinteam.com,akin+team,52.6,DropCatch,PreRelease (price on site),,,2026-11-19,7,0,0,0,4,2014,2017
 foreignteam.com,foreign+team,52.6,DropCatch,PreRelease (price on site),,,2026-11-24,4,0,0,0,0,,
 moonturkey.com,moon+turkey,52.3,DropCatch,PreRelease (price on site),,,2026-11-26,7,0,0,0,0,,
 halfpet.com,half+pet,52.2,DropCatch,PrivateSeller (price on site),,,2026-11-19,5,0,0,0,22,2003,2024
 beesdrop.com,bees+drop,51.4,DropCatch,PreRelease (price on site),,,2026-11-20,7,0,0,0,0,,
-citizenbenefits.com,citizen+benefits,50.7,DropCatch,PrivateSeller (price on site),,,2026-11-18,7,0,0,0,21,2005,2025
 autolives.com,auto+lives,50.4,DropCatch,PrivateSeller (price on site),,,2026-11-23,5,0,0,0,16,2010,2025
 autowomen.com,auto+women,50.2,DropCatch,PreRelease (price on site),,,2026-11-26,4,0,0,0,11,2001,2011
 coinpretty.com,coin+pretty,47.9,DropCatch,PreRelease (price on site),,,2026-11-19,4,0,0,0,0,,
 badfree.com,bad+free,47.9,DropCatch,PreRelease (price on site),,,2026-11-27,0,0,0,0,17,2010,2026
-manarea.com,man+area,47.7,DropCatch,PrivateSeller (price on site),,,2026-11-18,0,0,0,0,8,2004,2011
-travelvanguard.com,travel+vanguard,47.4,DropCatch,PrivateSeller (price on site),,,2026-11-18,7,0,0,0,6,2013,2018
-pointdays.com,point+days,47.3,DropCatch,PrivateSeller (price on site),,,2026-11-20,0,0,0,0,0,2013,
-menseason.com,men+season,47.2,DropCatch,PrivateSeller (price on site),,,2026-11-18,0,0,0,0,1,2018,2018
-knownmen.com,known+men,47.1,DropCatch,PreRelease (price on site),,,2026-11-18,0,0,0,0,4,2022,2025
+pointdays.com,point+days,47.3,DropCatch,PrivateSeller (price on site),,,2026-11-20,0,0,0,0,1,2013,2013
 bestintell.com,best+in+tell,47.0,DropCatch,Dropped (price on site),,,2026-11-19,0,0,0,0,2,2025,2026
-fancyinfo.com,fancy+info,47.0,DropCatch,PrivateSeller (price on site),,,2026-11-18,5,0,0,0,13,2004,2016
-mancourse.com,man+course,47.0,DropCatch,PrivateSeller (price on site),,,2026-11-18,0,0,0,0,2,2010,2011
 groupgreat.com,group+great,47.0,DropCatch,PrivateSeller (price on site),,,2026-11-19,0,0,0,0,13,2013,2025
-closeend.com,close+end,46.9,DropCatch,PrivateSeller (price on site),,,2026-11-18,0,0,0,0,5,2021,2025
-binbed.com,bin+bed,89.6,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-20,39,0,0,0,0,,
+mindwomen.com,mind+women,46.8,DropCatch,PrivateSeller (price on site),,,2026-11-19,0,0,0,0,11,2015,2025
+giftedtrust.com,gifted+trust,46.8,DropCatch,PrivateSeller (price on site),,,2026-11-24,5,0,0,0,error,,
+waterhand.com,water+hand,46.8,DropCatch,PrivateSeller (price on site),,,2026-11-23,0,0,0,0,1,2026,2026
+niceyears.com,nice+years,46.7,DropCatch,PreRelease (price on site),,,2026-11-23,0,0,0,0,0,,
+gameinplace.com,game+in+place,46.7,DropCatch,PreRelease (price on site),,,2026-11-25,0,0,0,0,0,,
+bestunions.com,best+unions,46.7,DropCatch,PrivateSeller (price on site),,,2026-11-23,3,0,0,0,10,2010,2019
+peaklance.com,peak+lance,46.6,DropCatch,PrivateSeller (price on site),,,2026-11-19,6,0,0,0,9,2018,2026
+soonopen.com,soon+open,46.6,DropCatch,PrivateSeller (price on site),,,2026-11-20,0,0,0,0,6,2013,2018
+handroom.com,hand+room,46.6,DropCatch,PreRelease (price on site),,,2026-11-26,0,0,0,0,0,,
+largewhite.com,large+white,46.5,DropCatch,PrivateSeller (price on site),,,2026-11-24,0,0,0,0,23,2004,2026
+moneyonpay.com,money+on+pay,46.5,DropCatch,PreRelease (price on site),,,2026-11-20,0,0,0,0,0,,
+asktheman.com,ask+the+man,46.5,DropCatch,PrivateSeller (price on site),,,2026-11-25,0,0,0,0,24,2003,2026
+agepeople.com,age+people,46.4,DropCatch,PreRelease (price on site),,,2026-11-20,0,0,0,0,3,2016,2018
+stopthemoney.com,stop+the+money,46.4,DropCatch,PreRelease (price on site),,,2026-11-20,0,0,0,0,3,2011,2013
+binbed.com,bin+bed,89.6,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-20,39,0,0,0,14,2013,2026
 dropheal.com,drop+heal,88.1,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-19,61,0,0,0,1,2025,2025
 cleanbot.com,clean+bot,86.5,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-19,135,0,0,0,25,2001,2025
 hairopen.com,hair+open,63.4,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-19,9,0,0,0,16,2001,2016
 goingteam.com,going+team,57.3,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-22,5,0,0,0,8,2019,2026
 drivenlist.com,driven+list,57.1,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-22,8,0,0,0,2,2010,2011
-swordsofiron.com,swords+of+iron,55.9,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-22,11,0,0,0,2,2024,2025
+swordsofiron.com,swords+of+iron,55.9,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-22,11,0,0,0,0,,
 gamevalid.com,game+valid,51.7,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-22,5,0,0,0,0,,
 gameages.com,game+ages,50.8,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-19,4,0,0,0,18,2000,2017
 faunastore.com,fauna+store,48.7,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-19,7,0,0,0,15,2011,2025
 guruwriting.com,guru+writing,48.2,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-20,6,0,0,0,16,2010,2025
-lottime.com,lot+time,47.9,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-22,0,0,0,0,0,,
-gamemean.com,game+mean,47.6,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-20,0,0,0,0,0,2021,
+lottime.com,lot+time,47.9,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-22,0,0,0,0,13,2013,2025
+gamemean.com,game+mean,47.6,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-20,0,0,0,0,5,2021,2025
 pointtry.com,point+try,47.6,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-20,0,0,0,0,0,,
 helphard.com,help+hard,47.6,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-20,0,0,0,0,6,2021,2026
 sincerun.com,since+run,47.6,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-20,0,0,0,0,0,,
@@ -370,14 +370,14 @@ factgod.com,fact+god,47.4,DropCatch,DropCatch backorder $59 (pending delete),59,
 longarea.com,long+area,47.4,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-20,0,0,0,0,1,2017,2017
 newsside.com,news+side,47.3,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-22,0,0,0,0,8,2009,2016
 hopeguy.com,hope+guy,47.1,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-19,0,0,0,0,7,2018,2024
-duegame.com,due+game,47.1,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-19,0,0,0,0,0,2021,
+duegame.com,due+game,47.1,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-19,0,0,0,0,0,,
 johnwar.com,john+war,47.1,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-20,0,0,0,0,3,2014,2016
 readfact.com,read+fact,47.1,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-20,0,0,0,0,14,2011,2024
-bestlost.com,best+lost,47.1,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-20,0,0,0,0,13,2014,2026
-guystime.com,guys+time,47.1,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-21,0,0,0,0,9,2011,2019
+bestlost.com,best+lost,47.1,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-20,0,0,0,0,0,,
+guystime.com,guys+time,47.1,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-21,0,0,0,0,0,2011,
 moneytorun.com,money+to+run,47.0,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-19,0,0,0,0,5,2021,2025
-caronlife.com,car+on+life,47.0,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-19,0,0,0,0,0,,
-cityoflive.com,city+of+live,47.0,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-19,0,0,0,0,0,2013,
+caronlife.com,car+on+life,47.0,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-19,0,0,0,0,15,2011,2025
+cityoflive.com,city+of+live,47.0,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-19,0,0,0,0,10,2013,2022
 workperson.com,work+person,47.0,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-19,0,0,0,0,1,2024,2024
 workofwork.com,work+of+work,47.0,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-20,0,0,0,0,0,,
 loveorlove.com,love+or+love,47.0,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-20,0,0,0,0,21,2005,2025
@@ -393,9 +393,9 @@ readforlove.com,read+for+love,46.7,DropCatch,DropCatch backorder $59 (pending de
 courseshow.com,course+show,46.7,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-20,0,0,0,0,0,,
 likeforreal.com,like+for+real,46.7,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-21,0,0,0,0,8,2018,2025
 liveofmusic.com,live+of+music,46.7,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-21,0,0,0,0,17,2005,2021
-moneynnews.com,money+n+news,46.7,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-22,0,0,0,0,0,,
+moneynnews.com,money+n+news,46.7,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-22,0,0,0,0,0,2023,
 bookinlove.com,book+in+love,46.6,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-21,0,0,0,0,18,2008,2025
 thankshelp.com,thanks+help,46.6,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-22,0,0,0,0,15,2011,2025
 facetomusic.com,face+to+music,46.5,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-19,0,0,0,0,0,,
-kindofkind.com,kind+of+kind,46.5,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-19,0,0,0,0,0,,
+kindofkind.com,kind+of+kind,46.5,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-19,0,0,0,0,3,2023,2025
 bestbecome.com,best+become,46.5,DropCatch,DropCatch backorder $59 (pending delete),59,,2026-11-21,0,0,0,0,18,2008,2025
