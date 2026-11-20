@@ -411,6 +411,8 @@ def add_archive_history(rows):
 HANDREG_MAX_CHECKS = 500          # keywords checked per Friday run
 HANDREG_TIME_BUDGET = 420         # seconds
 HANDREG_MIN_TLDS = 3              # keyword must already be registered in at least this many extensions
+HANDREG_BLOCK = {"butt", "boob", "boobs", "sexy", "booty", "movies", "movie", "torrent", "slot",
+                 "slots", "gems", "pick", "jackpot", "lottery", "hentai", "anime"}  # piracy/betting brands
 HANDREG_MAX_TLDS = 80             # above this the .com is practically always taken
 
 
@@ -438,6 +440,33 @@ def _rdap_status(domain):
     return "unknown"
 
 
+EXACT = {}
+
+
+def build_exact_map(all_rows):
+    """keyword -> exact-match extension count (how many TLDs the exact keyword is registered in)."""
+    exact = {}
+    for r in all_rows:
+        n = r.get("ext_tlds") or 0
+        if n:
+            k = r["domain"].split(".", 1)[0]
+            if n > exact.get(k, 0):
+                exact[k] = n
+    return exact
+
+
+def unnatural_order(words, exact):
+    """Word-order rule (Domain Investment Bangladesh group, 2026-11-20): SolarPanels yes,
+    PanelsSolar no. Data test: if the swapped two-word keyword is registered in clearly more
+    extensions than this one, people say it the other way round, so this order is unnatural."""
+    parts = [w for w in words.split("+") if w not in CONNECTORS] if words else []
+    if len(parts) != 2:
+        return False
+    this = exact.get(parts[0] + parts[1], 0)
+    swapped = exact.get(parts[1] + parts[0], 0)
+    return swapped >= 5 and swapped >= 3 * max(this, 1)
+
+
 def find_handreg(all_rows, kw_tlds):
     """Friday hand-reg list, demand-first: real-word keywords that companies/investors have
     already registered in several other extensions (GoDaddy keywordRegistrations / DotDB count),
@@ -446,12 +475,7 @@ def find_handreg(all_rows, kw_tlds):
     from concurrent.futures import ThreadPoolExecutor
     listed = {r["domain"].split(".", 1)[0] for r in all_rows if r["domain"].endswith((".com", ".si"))}
     cands = []
-    exact = {}
-    for r in all_rows:
-        n = r.get("ext_tlds") or 0
-        if n:
-            k = r["domain"].split(".", 1)[0]
-            exact[k] = max(exact.get(k, 0), n)
+    exact = EXACT if EXACT else build_exact_map(all_rows)
     for k, n in exact.items():
         if n < HANDREG_MIN_TLDS or n > HANDREG_MAX_TLDS or k in listed:
             continue
@@ -466,12 +490,16 @@ def find_handreg(all_rows, kw_tlds):
         core = [w for w in parts if w not in CONNECTORS]
         if any(w in FUNCTION_WORDS for w in core):
             continue
-        if any(w in BLOCK_WORDS or w in ("butt", "boob", "boobs", "sexy", "booty") for w in core):
+        if unnatural_order(words, exact):
+            continue
+        if any(w in BLOCK_WORDS or w in HANDREG_BLOCK for w in core):
             continue
         if zipf_frequency and min(zipf_frequency(w, "en") for w in core) < 3.5:
             continue
         cands.append((n, k, words))
-    cands.sort(reverse=True)
+    # Check the 3-25 band first: still proven demand, but the .com is far more often unregistered
+    # than for 70+ extension keywords (2026-11-20 run: 357 checks of 71-80 band, 0 .com free).
+    cands.sort(key=lambda c: (c[0] > 25, -c[0]))
     cands = cands[:HANDREG_MAX_CHECKS]
     log(f"Hand-reg: {len(cands)} demand keywords to check (exact keyword in {HANDREG_MIN_TLDS}-{HANDREG_MAX_TLDS} extensions)")
     start, out = time.time(), []
@@ -625,6 +653,9 @@ def main():
             if r["tld_count"] > kw_tlds.get(k, 0):
                 kw_tlds[k] = r["tld_count"]
     log(f"Keyword demand map: {len(kw_tlds)} keywords")
+    global EXACT
+    EXACT = build_exact_map(all_rows)
+    reversed_dropped = [0]
     for r in all_rows:
         d = r["domain"]
         if d in seen:
@@ -637,6 +668,9 @@ def main():
         words = split_words(sld) if WORDS else ""
         if WORDS and not words:
             continue                      # not one or two real words
+        if unnatural_order(words, EXACT):
+            reversed_dropped[0] += 1
+            continue                      # PanelsSolar-style reversed word order
         r["words"] = words
         if r.get("no_metrics"):
             # DropCatch: no price or metrics in the file. Keep clean real-word names in
@@ -703,6 +737,7 @@ def main():
     for r in buy:
         eligible[r["source"]] = eligible.get(r["source"], 0) + 1
     log(f"Eligible before quotas: {eligible}")
+    log(f"Dropped for reversed word order: {reversed_dropped[0]}")
     room = MAX_ROWS - len(dc)
     picked, used, leftover = [], {}, []
     for r in buy:
