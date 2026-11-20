@@ -404,6 +404,89 @@ def add_archive_history(rows):
         log(f"Archive sample errors: {ARCHIVE_ERRORS}")
 
 
+HANDREG_MAX_CHECKS = 500          # keywords checked per Friday run
+HANDREG_TIME_BUDGET = 360         # seconds
+HANDREG_MIN_TLDS = 3              # keyword must already be registered in at least this many extensions
+
+
+def _rdap_status(domain):
+    """'available' (RDAP 404), 'taken' (200) or 'unknown'. Runs on GitHub, because the cloud
+    agent cannot reach RDAP/DNS (blocked, Friday 2026-11-20)."""
+    tld = domain.rsplit(".", 1)[1]
+    url = (f"https://rdap.verisign.com/com/v1/domain/{domain}" if tld == "com"
+           else f"https://rdap.org/domain/{domain}")
+    req = urllib.request.Request(url, headers={"User-Agent": "domain-feed/1.0",
+                                               "Accept": "application/rdap+json"})
+    for attempt in range(2):
+        try:
+            with urllib.request.urlopen(req, timeout=20) as resp:
+                return "taken" if resp.status == 200 else "unknown"
+        except urllib.error.HTTPError as e:
+            if e.code == 404:
+                return "available"
+            if e.code == 429:
+                time.sleep(10)
+                continue
+            return "unknown"
+        except Exception:
+            time.sleep(3)
+    return "unknown"
+
+
+def find_handreg(all_rows, kw_tlds):
+    """Friday hand-reg list, demand-first: real-word keywords that companies/investors have
+    already registered in several other extensions (GoDaddy keywordRegistrations / DotDB count),
+    whose .com or .si is unregistered right now per RDAP. Nothing is invented: every keyword comes
+    from the auction data. Output: data/handreg_available.csv."""
+    from concurrent.futures import ThreadPoolExecutor
+    listed = {r["domain"].split(".", 1)[0] for r in all_rows if r["domain"].endswith((".com", ".si"))}
+    cands = []
+    for k, n in kw_tlds.items():
+        if n < HANDREG_MIN_TLDS or k in listed:
+            continue
+        if not k.isascii() or not k.isalpha() or not (5 <= len(k) <= MAX_SLD_LEN):
+            continue
+        words = split_words(k) if WORDS else ""
+        if not words:
+            continue
+        parts = words.split("+")
+        if parts[0] in CONNECTORS or parts[-1] in CONNECTORS:
+            continue
+        core = [w for w in parts if w not in CONNECTORS]
+        if any(w in FUNCTION_WORDS for w in core):
+            continue
+        if any(w in BLOCK_WORDS or w in ("butt", "boob", "boobs", "sexy", "booty") for w in core):
+            continue
+        if zipf_frequency and min(zipf_frequency(w, "en") for w in core) < 3.0:
+            continue
+        cands.append((n, k, words))
+    cands.sort(reverse=True)
+    cands = cands[:HANDREG_MAX_CHECKS]
+    log(f"Hand-reg: {len(cands)} demand keywords to check (registered in >= {HANDREG_MIN_TLDS} extensions)")
+    start, out = time.time(), []
+
+    def check(item):
+        n, k, words = item
+        if time.time() - start > HANDREG_TIME_BUDGET:
+            return None
+        com = _rdap_status(k + ".com")
+        si = _rdap_status(k + ".si")
+        return {"keyword": k, "words": words, "tld_count": n, "com": com, "si": si}
+
+    with ThreadPoolExecutor(max_workers=4) as ex:
+        results = [r for r in ex.map(check, cands) if r]
+    out = [r for r in results if "available" in (r["com"], r["si"])]
+    unknown = sum(1 for r in results if r["com"] == "unknown")
+    out.sort(key=lambda r: (r["com"] != "available", -r["tld_count"]))
+    with open(OUT / "handreg_available.csv", "w", newline="", encoding="utf-8") as f:
+        w = csv.DictWriter(f, fieldnames=["keyword", "words", "tld_count", "com", "si"])
+        w.writeheader()
+        w.writerows(out)
+    log(f"Hand-reg: checked {len(results)} in {time.time() - start:.0f}s; "
+        f"{sum(1 for r in out if r['com'] == 'available')} .com and "
+        f"{sum(1 for r in out if r['si'] == 'available')} .si available; {unknown} .com unknown")
+
+
 _now = datetime.now(timezone.utc)
 TODAY = _now.strftime("%Y-%m-%d")
 DROP_CUTOFF = TODAY if _now.hour < 12 else (_now + timedelta(days=1)).strftime("%Y-%m-%d")
@@ -623,6 +706,13 @@ def main():
     buy = picked + dc
     watch = watch[:MAX_AI_ROWS]
     add_archive_history(buy)
+    # Hand-reg availability list for the Friday report: Thursday/Friday (UTC) runs, or any run
+    # with HANDREG=1 in the environment.
+    if datetime.now(timezone.utc).weekday() in (3, 4) or os.environ.get("HANDREG") == "1":
+        try:
+            find_handreg(all_rows, kw_tlds)
+        except Exception as e:
+            log(f"Hand-reg step failed: {e}")
 
     fields = ["domain", "words", "signal_score", "source", "type", "price_usd", "bids", "ends",
               "tld_count", "search_volume", "age_years", "ref_domains",
