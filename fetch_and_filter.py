@@ -162,6 +162,7 @@ def to_price(val):
 
 TLDCOUNT_KEYS = ["dotdb tld count", "keywordregistrations", "exactmatchtlds", "developedtlds",
                  "extensionstaken"]
+EXACT_TLD_KEYS = ["dotdb tld count", "exactmatchtlds", "extensionstaken"]
 VOLUME_KEYS = ["semrushsearchvolume", "search volume", "keywordsearchcount"]
 AGE_KEYS = ["domainage", "age"]
 REFDOM_KEYS = ["majesticreferringdomains", "semrushreferringdomains", "links", "backlinkscount"]
@@ -203,6 +204,9 @@ def normalise(row, source):
         "bids": "" if pick(row, BIDS_KEYS) is None else pick(row, BIDS_KEYS),
         "ends": pick(row, END_KEYS) or "",
         "tld_count": int(best(row, TLDCOUNT_KEYS)),
+        # exact-match extension count only (keywordRegistrations counts every domain that merely
+        # CONTAINS the keyword, e.g. "anifest" inside "manifest", so it is useless for hand-reg)
+        "ext_tlds": int(best(row, EXACT_TLD_KEYS)),
         "search_volume": int(best(row, VOLUME_KEYS)),
         "age_years": int(best(row, AGE_KEYS)),
         "ref_domains": int(best(row, REFDOM_KEYS)),
@@ -405,8 +409,9 @@ def add_archive_history(rows):
 
 
 HANDREG_MAX_CHECKS = 500          # keywords checked per Friday run
-HANDREG_TIME_BUDGET = 360         # seconds
+HANDREG_TIME_BUDGET = 420         # seconds
 HANDREG_MIN_TLDS = 3              # keyword must already be registered in at least this many extensions
+HANDREG_MAX_TLDS = 80             # above this the .com is practically always taken
 
 
 def _rdap_status(domain):
@@ -441,8 +446,14 @@ def find_handreg(all_rows, kw_tlds):
     from concurrent.futures import ThreadPoolExecutor
     listed = {r["domain"].split(".", 1)[0] for r in all_rows if r["domain"].endswith((".com", ".si"))}
     cands = []
-    for k, n in kw_tlds.items():
-        if n < HANDREG_MIN_TLDS or k in listed:
+    exact = {}
+    for r in all_rows:
+        n = r.get("ext_tlds") or 0
+        if n:
+            k = r["domain"].split(".", 1)[0]
+            exact[k] = max(exact.get(k, 0), n)
+    for k, n in exact.items():
+        if n < HANDREG_MIN_TLDS or n > HANDREG_MAX_TLDS or k in listed:
             continue
         if not k.isascii() or not k.isalpha() or not (5 <= len(k) <= MAX_SLD_LEN):
             continue
@@ -457,12 +468,12 @@ def find_handreg(all_rows, kw_tlds):
             continue
         if any(w in BLOCK_WORDS or w in ("butt", "boob", "boobs", "sexy", "booty") for w in core):
             continue
-        if zipf_frequency and min(zipf_frequency(w, "en") for w in core) < 3.0:
+        if zipf_frequency and min(zipf_frequency(w, "en") for w in core) < 3.5:
             continue
         cands.append((n, k, words))
     cands.sort(reverse=True)
     cands = cands[:HANDREG_MAX_CHECKS]
-    log(f"Hand-reg: {len(cands)} demand keywords to check (registered in >= {HANDREG_MIN_TLDS} extensions)")
+    log(f"Hand-reg: {len(cands)} demand keywords to check (exact keyword in {HANDREG_MIN_TLDS}-{HANDREG_MAX_TLDS} extensions)")
     start, out = time.time(), []
 
     def check(item):
@@ -470,10 +481,10 @@ def find_handreg(all_rows, kw_tlds):
         if time.time() - start > HANDREG_TIME_BUDGET:
             return None
         com = _rdap_status(k + ".com")
-        si = _rdap_status(k + ".si")
+        si = _rdap_status(k + ".si") if com != "available" else "not checked"
         return {"keyword": k, "words": words, "tld_count": n, "com": com, "si": si}
 
-    with ThreadPoolExecutor(max_workers=4) as ex:
+    with ThreadPoolExecutor(max_workers=6) as ex:
         results = [r for r in ex.map(check, cands) if r]
     out = [r for r in results if "available" in (r["com"], r["si"])]
     unknown = sum(1 for r in results if r["com"] == "unknown")
